@@ -1,9 +1,13 @@
 body
 {
+    @font-face {
+        font-family: "Font";
+        src: url("https://a439-owo.github.io/fonts/SourceHanSans-Regular.ttf");
+    }
     background-image: url("https://hatsunemiku-tov.imwork.net/api/miku?redirect=1");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-    font-family: url("https://a439-owo.github.io/refs/heads/main/fonts/SourceHanSans-Regular.ttf");
+    font-family: "Font", sans-serif;
 }
