@@ -1,8 +1,5 @@
 body
 {
-    background-image: url("https://api.suyanw.cn/api/mao/");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
+    margin: 0;
+    background: linear-gradient(to right,#7fffff,#ff7fff);
 }
