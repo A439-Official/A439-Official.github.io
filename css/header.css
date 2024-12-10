@@ -1,0 +1,8 @@
+body
+{
+    background-image: url("https://api.suyanw.cn/api/mao/");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
