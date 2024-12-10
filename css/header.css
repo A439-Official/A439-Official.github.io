@@ -9,9 +9,18 @@ body
     background-size: cover;
 }
 
-img.logo
+a.logo
 {
     position: fixed;
     top: 0px;
     left: 0px;
+}
+
+a.home
+{
+    position: fixed;
+    font-size: 50px;
+    color: #000000;
+    top: 15px;
+    left: 280px;
 }
