@@ -6,3 +6,8 @@ body
     background-attachment: fixed;
     background-size: cover;
 }
+
+object.header
+{
+    margin: 0;
+}
