@@ -1,5 +1,10 @@
 body
 {
     margin: 0;
-    background: linear-gradient(to right,#7fffff,#ff7fff);
+    padding: 0;
+    background: linear-gradient(70deg,#7fffff 0%,#ffffff 50%,#ff7fff 100%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
 }
