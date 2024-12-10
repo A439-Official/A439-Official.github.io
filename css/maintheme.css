@@ -1,6 +1,7 @@
 body
 {
     margin: 0;
+    padding: 0;
     background-image: url("https://api.suyanw.cn/api/mao/");
     background-repeat: no-repeat;
     background-position: center;
