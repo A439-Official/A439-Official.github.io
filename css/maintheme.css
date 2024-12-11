@@ -9,6 +9,8 @@ body {
 }
 
 div.header {
+    position: fixed;
+    width: 100%;
     height: 100px;
 }
 
