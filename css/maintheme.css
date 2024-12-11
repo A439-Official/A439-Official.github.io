@@ -7,27 +7,31 @@
 
 html,
 body {
-    height: 100%;
     display: flex;
+    height: 100%;
     flex-direction: column;
 }
 
 div.header {
-    font-size: 100;
-}
-
-div.nav {
     height: 60px;
-    background: linear-gradient(39deg, #7fffff 0%, #ffffff 30%, #ffffff 70%, #ff7fff 100%);
     font-size: 0;
 }
 
+div.nav {
+    display: flex;
+}
+
+div.nav ul.linklist {
+    flex: 1;
+    height: 60px;
+    background: linear-gradient(39deg, #7fffff 0%, #ffffff 30%, #ffffff 70%, #ff7fff 100%);
+}
+
 div.nav li {
+    text-align: center;
     position: relative;
-    left: 150px;
     font-size: 20px;
     float: left;
-    height: 60px;
     width: 100px;
     line-height: 60px;
     text-align: center;
@@ -40,22 +44,20 @@ div.nav li a {
 }
 
 div.nav li:hover {
-    background: #f7f7f7;
+    background: #7f7f7f7f;
 }
 
 div.nav a.logo img {
-    position: fixed;
     height: 60px;
 }
 
 div.main {
-    flex-grow: 1;
+    flex: 1;
     background-image: url("https://api.suyanw.cn/api/mao/");
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
     background-color: #ffffff;
-    padding: 20px;
     font-size: 20px;
 }
