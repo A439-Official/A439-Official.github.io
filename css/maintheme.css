@@ -55,6 +55,7 @@ div.nav a.logo img {
     display: none;
     /* Chrome Safari Opera */
 }
+
 div.main {
     scrollbar-width: none;
     /* Firefox */
@@ -82,7 +83,17 @@ div.main {
 div.main div.content {
     margin: auto;
     padding: 50px;
-    border-radius:50px;
+    border-radius: 50px;
     background-color: #ffffff7f;
     width: 70%;
+    font-size: 20px;
+}
+
+div.main div.content h1.title {
+    font-size: 100px;
+}
+
+div.main div.content img.icon {
+    width: 50%;
+    max-width: 300px;
 }
