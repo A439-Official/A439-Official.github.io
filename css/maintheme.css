@@ -1,24 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
 html,
 body {
     height: 100%;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
-    font-size: 0;
 }
 
 div.header {
+    font-size: 100;
+}
+
+div.nav {
+    height: 60px;
+    background: linear-gradient(39deg, #7fffff 0%, #ffffff 30%, #ffffff 70%, #ff7fff 100%);
+    font-size: 0;
+}
+
+div.nav li {
+    position: relative;
+    left: 150px;
+    font-size: 20px;
+    float: left;
+    height: 60px;
+    width: 100px;
+    line-height: 60px;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+div.nav li a {
+    color: #000000;
+    display: block;
+}
+
+div.nav li:hover {
+    background: #f7f7f7;
+}
+
+div.nav a.logo img {
     position: fixed;
-    width: 100%;
-    height: 100px;
+    height: 60px;
 }
 
 div.main {
     flex-grow: 1;
     background-image: url("https://api.suyanw.cn/api/mao/");
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center;
     background-attachment: fixed;
     background-size: cover;
     background-color: #ffffff;
