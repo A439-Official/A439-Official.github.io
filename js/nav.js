@@ -13,19 +13,26 @@ nav.appendChild(myaccount);
 var ul = document.createElement("ul");
 ul.setAttribute("class", "linklist");
 
-var li1 = document.createElement("li");
-var a1 = document.createElement("a");
-a1.setAttribute("href", "/");
-a1.appendChild(document.createTextNode("Home"));
-li1.appendChild(a1);
-ul.appendChild(li1);
+var content = document.createElement("li");
+var link = document.createElement("a");
+link.setAttribute("href", "/");
+link.appendChild(document.createTextNode("主页"));
+content.appendChild(link);
+ul.appendChild(content);
 
-var li2 = document.createElement("li");
-var a2 = document.createElement("a");
-a2.setAttribute("href", "/note");
-a2.appendChild(document.createTextNode("Note"));
-li2.appendChild(a2);
-ul.appendChild(li2);
+var content = document.createElement("li");
+var link = document.createElement("a");
+link.setAttribute("href", "/note");
+link.appendChild(document.createTextNode("笔记"));
+content.appendChild(link);
+ul.appendChild(content);
+
+var content = document.createElement("li");
+var link = document.createElement("a");
+link.setAttribute("href", "/links.html");
+link.appendChild(document.createTextNode("友情链接"));
+content.appendChild(link);
+ul.appendChild(content);
 
 nav.appendChild(ul);
 
