@@ -64,6 +64,10 @@ div.main {
     overflow-y: scroll;
 }
 
+div.main a {
+    color: #9cfff8;
+}
+
 div.main {
     flex: 1;
     background-image: url("https://api.suyanw.cn/api/mao/");
@@ -72,5 +76,4 @@ div.main {
     background-attachment: fixed;
     background-size: cover;
     background-color: #ffffff;
-    font-size: 20px;
 }
