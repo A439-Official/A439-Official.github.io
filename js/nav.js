@@ -5,8 +5,7 @@ var logo = document.createElement("img");
 logo.setAttribute("src", "/img/A439.png");
 var myaccount = document.createElement("a");
 myaccount.setAttribute("class", "logo");
-myaccount.setAttribute("href", "https://space.bilibili.com/3493079245916811");
-myaccount.setAttribute("target", "_blank");
+myaccount.setAttribute("href", "/about.html");
 myaccount.appendChild(logo);
 nav.appendChild(myaccount);
 
