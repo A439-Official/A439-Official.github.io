@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySQL</title>
+    <link rel="stylesheet" href="/css/maintheme.css" type="text/css" />
+    <script src="/js/nav.js" type="text/javascript" defer></script>
+</head>
+
+<body>
+    <div class="header"></div>
+    <div class="main">
+        <div class="content">
+            <h1 class="title">MySQL</h1>
+            <p>MySQL 是最流行的关系型数据库管理系统，在 WEB 应用方面 MySQL 是最好的 RDBMS(Relational Database Management System：关系数据库管理系统)应用软件之一
+            </p>
+
+            <h2>SHOW</h2>
+            <h3>DATABASES</h3>
+            <p>SHOW DATABASES;</p>
+            <h3>TABLES</h3>
+            <p>SHOW TABLES FROM 数据库名;</p>
+            <h3>USERS</h3>
+            <p>SHOW USERS;</p>
+            <h3>GRANTS</h3>
+            <p>SHOW GRANTS FOR '用户名'@'主机名';</p>
+
+            <h2>CREATE</h2>
+            <h3>DATABASE</h3>
+            <p>CREATE DATABASE 数据库名 参数;</p>
+            <h3>TABLE</h3>
+            <p>CREATE TABLE 表名 (列名 数据类型 约束, ......);</p>
+            <h3>INDEX</h3>
+            <p>CREATE INDEX 索引名 ON 表名 (列名);</p>
+            <h3>USER</h3>
+            <p>CREATE USER '用户名'@'主机名' IDENTIFIED BY '密码';</p>
+
+            <h2>DROP</h2>
+            <h3>DATABASE</h3>
+            <p>DROP DATABASE 数据库名;</p>
+            <h3>TABLE</h3>
+            <p>DROP TABLE 表名;</p>
+            <h3>INDEX</h3>
+            <p>DROP INDEX 索引名 ON 表名;</p>
+            <h3>USER</h3>
+            <p>DROP USER '用户名'@'主机名';</p>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
