@@ -30,7 +30,6 @@ div.nav {
 }
 
 div.nav ul.linklist {
-    display: flex;
     flex: 1;
     height: 60px;
     background: linear-gradient(39deg, #7fffff 0%, #ffffff 30%, #ffffff 70%, #ff7fff 100%);
