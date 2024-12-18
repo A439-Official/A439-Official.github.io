@@ -37,9 +37,3 @@ nav.appendChild(ul);
 
 var header = document.getElementsByClassName("header")[0];
 header.appendChild(nav);
-
-var icon = document.createElement("link");
-icon.setAttribute("rel", "icon");
-icon.setAttribute("type", "image/png");
-icon.setAttribute("href", "/img/AF.png");
-document.getElementsByTagName("head")[0].appendChild(icon);
