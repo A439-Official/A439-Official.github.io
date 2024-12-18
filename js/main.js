@@ -40,5 +40,6 @@ header.appendChild(nav);
 
 var icon = document.createElement("link");
 icon.setAttribute("rel", "icon");
-icon.setAttribute("href", "/img/AF.ico");
+icon.setAttribute("type", "image/png");
+icon.setAttribute("href", "/img/AF.png");
 document.getElementsByTagName("head")[0].appendChild(icon);
