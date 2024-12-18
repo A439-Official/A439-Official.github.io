@@ -29,7 +29,7 @@ ul.appendChild(content);
 var content = document.createElement("li");
 var link = document.createElement("a");
 link.setAttribute("href", "/links.html");
-link.appendChild(document.createTextNode("友情链接"));
+link.appendChild(document.createTextNode("链接"));
 content.appendChild(link);
 ul.appendChild(content);
 
