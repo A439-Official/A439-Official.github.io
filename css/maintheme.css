@@ -91,10 +91,6 @@ div.main div.content {
     font-size: 20px;
 }
 
-div.main div.content * {
-    line-height: 1.5;
-}
-
 div.main div.content p {
     margin: 10px;
 }
