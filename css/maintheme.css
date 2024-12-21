@@ -91,12 +91,16 @@ div.main div.content {
     font-size: 20px;
 }
 
-div.main div.content h1.title {
-    padding: 20px;
-    font-size: 100px;
+div.main div.content * {
+    line-height: 1.5;
 }
 
 div.main div.content img.icon {
     width: 50%;
     max-width: 300px;
+}
+
+div.main div.content h1.title {
+    padding: 20px;
+    font-size: 100px;
 }
