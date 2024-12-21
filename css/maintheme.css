@@ -95,6 +95,10 @@ div.main div.content * {
     line-height: 1.5;
 }
 
+div.main div.content p {
+    margin: 10px;
+}
+
 div.main div.content img.icon {
     width: 50%;
     max-width: 300px;
