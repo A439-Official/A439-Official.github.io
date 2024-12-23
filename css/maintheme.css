@@ -80,15 +80,16 @@ div.main {
     background-position: center center;
     background-attachment: fixed;
     background-size: contain;
-    background-color: #c5c5c5;
+    background-color: #ffffff;
     padding: 50px;
 }
 
 div.main div.content {
+    color: #ffffff;
     margin: auto;
     padding: 50px;
     border-radius: 50px;
-    background-color: #ffffffcf;
+    background-color: #00000075;
     width: 70%;
     font-size: 20px;
 }
