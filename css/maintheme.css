@@ -73,11 +73,12 @@ div.main a {
 div.main {
     flex: 1;
     flex-wrap: nowrap;
-    background-image: url("https://apii.ctose.cn/api/cy/api/");
+    /* background-image: url("https://apii.ctose.cn/api/cy/api/"); */
+    background-image: url("/img/BG.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: contain;
     background-color: #ffffff;
     padding: 50px;
 }
