@@ -66,10 +66,6 @@ div.main {
     overflow-y: scroll;
 }
 
-div.main a {
-    color: #b9fff6;
-}
-
 div.main {
     flex: 1;
     flex-wrap: nowrap;
@@ -92,6 +88,10 @@ div.main div.content {
     background-color: #0000007f;
     width: 70%;
     font-size: 20px;
+}
+
+div.main div.content a {
+    color: #b9fff6;
 }
 
 div.main div.content p {
