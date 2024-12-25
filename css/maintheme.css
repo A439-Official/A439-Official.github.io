@@ -106,4 +106,15 @@ div.main div.content img.icon {
 div.main div.content h1.title {
     padding: 20px;
     font-size: 100px;
+    text-align: center;
+}
+
+div.main div.content form {
+    display: flex;
+    flex-direction: column;
+}
+
+div.main div.content form * {
+    margin: 0px;
+    padding: 0px;
 }
