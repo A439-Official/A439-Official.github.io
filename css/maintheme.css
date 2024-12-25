@@ -23,6 +23,8 @@ div.nav {
 }
 
 div.nav ul.linklist {
+    display: flex;
+    justify-content: space-around;
     flex: 1;
     height: 60px;
     background: linear-gradient(39deg, #7fffff 0%, #ffffff 30%, #ffffff 70%, #ff7fff 100%);
@@ -31,9 +33,9 @@ div.nav ul.linklist {
 div.nav li {
     text-align: center;
     position: relative;
+    width: 100%;
     font-size: 20px;
     float: left;
-    width: 100px;
     line-height: 60px;
     text-align: center;
     transition: background-color 0.2s ease-in-out;
@@ -112,9 +114,27 @@ div.main div.content h1.title {
 div.main div.content form {
     display: flex;
     flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+    color: #000000;
 }
 
 div.main div.content form * {
     margin: 0px;
     padding: 0px;
+}
+
+div.main div.content form input {
+    border:#000000 solid 1px;
+    border-radius: 5px;
+}
+
+div.main div.content form button {
+    border: none;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
 }
