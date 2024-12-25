@@ -118,23 +118,25 @@ div.main div.content form {
     padding: 20px;
     margin: 20px;
     color: #000000;
-}
-
-div.main div.content form * {
-    margin: 0px;
-    padding: 0px;
+    text-align: center;
 }
 
 div.main div.content form input {
+    margin:auto;
+    width: 50%;
     border:#000000 solid 1px;
     border-radius: 5px;
-    padding: 6px;
+    padding: 10px 20px;
+    max-width: 300px;
 }
 
 div.main div.content form button {
+    margin:auto;
+    width: 20%;
     border: none;
     background-color: #000000;
     color: #ffffff;
     padding: 10px 20px;
     border-radius: 5px;
+    max-width: 100px;
 }
