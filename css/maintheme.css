@@ -128,6 +128,7 @@ div.main div.content form * {
 div.main div.content form input {
     border:#000000 solid 1px;
     border-radius: 5px;
+    padding: 6px;
 }
 
 div.main div.content form button {
