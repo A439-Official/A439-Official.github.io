@@ -72,12 +72,12 @@ div.main {
     flex-wrap: nowrap;
     /* background-image: url("https://apii.ctose.cn/api/cy/api/");   miku */
     /* background-image: url("https://api.suyanw.cn/api/mao/"); nacho */
-    background-image: url("/img/BG.jpg");
+    background-image: url("/img/BG.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     background-size: contain;
-    background-color: #ffffff;
+    background-color: #000000;
     padding: 50px;
 }
 
