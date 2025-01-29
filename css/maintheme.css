@@ -122,16 +122,16 @@ div.main div.content form {
 }
 
 div.main div.content form input {
-    margin:auto;
+    margin: auto;
     width: 50%;
-    border:#000000 solid 1px;
+    border: #000000 solid 1px;
     border-radius: 5px;
     padding: 10px 20px;
     max-width: 300px;
 }
 
 div.main div.content form button {
-    margin:auto;
+    margin: auto;
     width: 20%;
     border: none;
     background-color: #000000;
