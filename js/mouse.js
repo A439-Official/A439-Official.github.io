@@ -13,7 +13,7 @@
     });
 
     // 初始化参数
-    let mouseX = 0, mouseY = 0;
+    let mouseX = canvas.width / 2, mouseY = canvas.height / 2;
     const trailConfig = {
         maxTrails: 50,
         trailSpeed: 0.9,
