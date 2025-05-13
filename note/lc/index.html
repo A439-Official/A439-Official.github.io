@@ -7,43 +7,141 @@
         <link rel="stylesheet" href="/css/maintheme.css" type="text/css" />
         <script src="/js/main.js" type="text/javascript" defer></script>
     </head>
+
     <body>
         <div class="header"></div>
         <div class="main">
             <div class="content">
                 <h1 class="title">Linux常用命令</h1>
-                <p>cd:切换目录</p>
-                <p>ls:列出目录内容</p>
-                <p>pwd:显示当前目录</p>
-                <p>mkdir:创建目录</p>
-                <p>rm:删除文件或目录</p>
-                <p>mv:移动或重命名文件或目录</p>
-                <p>cp:复制文件或目录</p>
-                <p>cat:查看文件内容</p>
-                <p>touch:创建文件</p>
-                <p>ps:查看进程</p>
-                <p>kill:杀死进程</p>
-                <p>top:实时显示进程信息</p>
-                <p>ifconfig:查看网络接口信息</p>
-                <p>ping:测试网络连通性</p>
-                <p>ssh:远程登录</p>
-                <p>scp:远程复制文件</p>
-                <p>wget:下载文件</p>
-                <p>tar:打包和压缩文件</p>
-                <p>gzip:压缩文件</p>
-                <p>gunzip:解压文件</p>
-                <p>zip:压缩文件</p>
-                <p>unzip:解压文件</p>
-                <p>chmod:修改文件权限</p>
-                <p>grep:搜索文件内容</p>
-                <p>find:搜索文件</p>
-                <p>man:查看命令帮助</p>
-                <p>passwd:修改密码</p>
-                <p>su:切换用户</p>
-                <p>sudo:以超级用户权限运行命令</p>
-                <p>history:查看历史命令</p>
-                <p>clear:清屏</p>
-                <p>exit:退出</p>
+
+                <h2>基础操作</h2>
+                <h3>文件系统导航</h3>
+                <dl>
+                    <dt><code>cd</code> - 切换目录</dt>
+                    <dd>
+                        <pre><code>cd /path/to/dir      # 绝对路径
+cd ../relative/path  # 相对路径
+cd -                 # 返回上次目录</code></pre>
+                        <p>💡 提示：使用<code>pushd/popd</code>实现目录栈管理</p>
+                    </dd>
+
+                    <dt><code>ls</code> - 列表查看</dt>
+                    <dd>
+                        <pre><code>ls -l    # 详细列表
+ls -a    # 显示隐藏文件
+ls -lh   # 人类可读格式</code></pre>
+                        <p>⚠️ 注意：<code>ls --color=auto</code>启用颜色区分文件类型</p>
+                    </dd>
+                </dl>
+
+                <h3>文件管理</h3>
+                <dl>
+                    <dt><code>rm</code> - 删除操作</dt>
+                    <dd>
+                        <pre><code>rm -r dir/      # 递归删除目录
+rm -f file     # 强制删除
+rm -rf /       # 危险！系统崩溃命令</code></pre>
+                        <p>🔒 安全提示：建议设置别名<code>alias rm='rm -i'</code>启用交互确认</p>
+                    </dd>
+
+                    <dt><code>cp</code> - 复制文件</dt>
+                    <dd>
+                        <pre><code>cp -a src/ dest/  # 保留属性复制
+cp -u *.txt dest/  # 仅复制更新文件</code></pre>
+                    </dd>
+                </dl>
+
+                <h2>系统管理</h2>
+                <h3>进程控制</h3>
+                <dl>
+                    <dt><code>systemctl</code> - 服务管理</dt>
+                    <dd>
+                        <pre><code>systemctl start nginx      # 启动服务
+systemctl enable sshd      # 开机自启
+systemctl status docker    # 查看状态</code></pre>
+                        <p>📝 记录：较新系统已替代<code>service</code>命令</p>
+                    </dd>
+
+                    <dt><code>top</code> - 实时监控</dt>
+                    <dd>
+                        <pre><code>top -o %CPU    # 按CPU排序
+top -p 1234    # 监控指定PID</code></pre>
+                        <p>⌨️ 快捷键：按<code>P</code>(CPU)/<code>M</code>(内存)排序</p>
+                    </dd>
+                </dl>
+
+                <h3>网络工具</h3>
+                <dl>
+                    <dt><code>curl</code> - 数据传输</dt>
+                    <dd>
+                        <pre><code>curl -O https://example.com/file.zip  # 下载文件
+curl -I https://google.com            # 查看响应头
+curl -X POST -d 'data=123' http://api.example.com</code></pre>
+                        <p>🔄 替代：已部分替代<code>wget</code>的HTTP功能</p>
+                    </dd>
+
+                    <dt><code>ss</code> - 套接字统计</dt>
+                    <dd>
+                        <pre><code>ss -tunlp    # 显示所有网络连接
+ss -s        # 摘要统计</code></pre>
+                        <p>🆕 更新：较新系统替代<code>netstat</code>命令</p>
+                    </dd>
+                </dl>
+
+                <h2>高级技巧</h2>
+                <h3>文本处理</h3>
+                <dl>
+                    <dt><code>grep</code> - 模式匹配</dt>
+                    <dd>
+                        <pre><code>grep -i 'pattern' *.log    # 忽略大小写
+grep -r 'function' ./src/   # 递归搜索
+grep -C 3 'error' access.log # 显示匹配行上下文</code></pre>
+                    </dd>
+
+                    <dt><code>sed</code> - 流编辑器</dt>
+                    <dd>
+                        <pre><code>sed 's/foo/bar/g' file.txt  # 替换文本
+sed '/^#/d' config.conf     # 删除注释行</code></pre>
+                    </dd>
+                </dl>
+
+                <h3>权限管理</h3>
+                <dl>
+                    <dt><code>chmod</code> - 权限修改</dt>
+                    <dd>
+                        <pre><code>chmod 755 script.sh  # 数字模式
+chmod +x file         # 添加执行权限
+chmod -R u+rwX dir/   # 递归设置目录权限</code></pre>
+                        <p>🔑 符号模式：u(用户)/g(组)/o(其他)/a(所有)</p>
+                    </dd>
+
+                    <dt><code>sudo</code> - 权限提升</dt>
+                    <dd>
+                        <pre><code>sudo -i         # 切换root shell
+sudo !!         # 重用上条命令
+sudoedit file   # 安全编辑受保护文件</code></pre>
+                        <p>⚠️ 安全：配置<code>/etc/sudoers</code>时使用<code>visudo</code></p>
+                    </dd>
+                </dl>
+
+                <h2>现代实践建议</h2>
+                <ol>
+                    <li>使用<code>bat</code>替代<code>cat</code>获得语法高亮</li>
+                    <li>用<code>exa</code>替代<code>ls</code>增强文件列表显示</li>
+                    <li>配置<code>zsh</code>+<code>oh-my-zsh</code>提升交互体验</li>
+                    <li>
+                        关键操作前使用<code>echo "command" | sudo tee /path</code>替代直接重定向
+                    </li>
+                    <li>设置<code>alias</code>简化常用复杂命令</li>
+                </ol>
+
+                <h2>危险操作警示</h2>
+                <ul class="warning">
+                    <li>慎用<code>rm -rf</code>，建议先使用<code>ls</code>确认路径</li>
+                    <li>管道符<code>|</code>使用前确保命令正确性</li>
+                    <li>修改系统文件前建议备份</li>
+                    <li>避免直接使用root账户操作</li>
+                </ul>
             </div>
         </div>
     </body>
