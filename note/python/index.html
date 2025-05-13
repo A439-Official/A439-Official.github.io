@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
     <head>
-        <meta charset="utf-8" />
+        <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Python</title>
         <link rel="stylesheet" href="/css/maintheme.css" type="text/css" />
@@ -13,77 +13,173 @@
         <div class="main">
             <div class="content">
                 <h1 class="title">Python</h1>
-                <h2>简介</h2>
-                <p>
-                    Python 是一种解释型、面向对象、动态数据类型的高级程序设计语言。像 Perl 语言一样,
-                    Python 源代码同样遵循 GPL(GNU General Public License) 协议。
-                </p>
-                <h2>数据类型</h2>
-                <p>int: 整数</p>
-                <p>float: 浮点数</p>
-                <p>bool: 布尔值</p>
-                <p>str: 字符串</p>
-                <p>list: 列表</p>
-                <p>tuple: 元组</p>
-                <p>dict: 字典</p>
-                <h2>运算符</h2>
-                <p>+: 加法</p>
-                <p>-: 减法</p>
-                <p>*: 乘法</p>
-                <p>/: 除法</p>
-                <p>%: 取模</p>
-                <p>**: 幂运算</p>
-                <p>==: 等于</p>
-                <p>!=: 不等于</p>
-                <p>&lt;: 小于</p>
-                <p>&lt;=: 小于等于</p>
-                <p>&gt;: 大于</p>
-                <p>&gt;=: 大于等于</p>
-                <h2>流程控制</h2>
-                <p>if: 条件判断</p>
-                <p>for: 循环</p>
-                <p>while: 循环</p>
-                <p>break: 跳出循环</p>
-                <p>continue: 跳过当前循环</p>
-                <h2>方法</h2>
-                <p>print: 输出</p>
-                <p>input: 输入</p>
-                <p>len: 长度</p>
-                <p>type: 类型</p>
-                <p>max: 最大值</p>
-                <p>min: 最小值</p>
-                <p>abs: 绝对值</p>
-                <p>round: 四舍五入</p>
-                <p>range: 范围</p>
-                <p>sorted: 排序</p>
-                <p>reverse: 反转</p>
-                <p>append: 添加元素</p>
-                <p>pop: 删除元素</p>
-                <p>extend: 扩展列表</p>
-                <p>index: 索引</p>
-                <p>count: 计数</p>
-                <p>split: 分割</p>
-                <p>join: 连接</p>
-                <p>replace: 替换</p>
-                <p>startswith: 开头</p>
-                <p>endswith: 结尾</p>
-                <p>isdigit: 数字</p>
-                <p>isalpha: 字母</p>
-                <p>isalnum: 字母或数字</p>
-                <p>isspace: 空白字符</p>
-                <p>islower: 小写</p>
-                <p>isupper: 大写</p>
-                <p>isnumeric: 数字</p>
-                <p>isdecimal: 十进制</p>
-                <h2>模块</h2>
-                <p>numpy: 数值计算</p>
-                <p>librosa: 音频处理</p>
-                <p>pygame: 图形处理</p>
-                <p>matplotlib: 绘图</p>
-                <p>pandas: 数据处理</p>
-                <p>sklearn: 机器学习</p>
-                <p>tensorflow: 深度学习</p>
-                <p>pillow: 图像处理</p>
+
+                <h2>核心特性解析</h2>
+                <h3>语言哲学</h3>
+                <blockquote>"优美 > 清晰 > 简单" - The Zen of Python</blockquote>
+                <p>Python设计哲学核心原则：</p>
+                <ul>
+                    <li>显式优于隐式</li>
+                    <li>单一职责原则</li>
+                    <li>错误应该尽早抛出</li>
+                </ul>
+
+                <h2>数据结构进阶</h2>
+                <h3>字典新特性</h3>
+                <dl>
+                    <dt>字典合并</dt>
+                    <dd>
+                        <pre><code>merged = {**dict1, **dict2}</code></pre>
+                    </dd>
+
+                    <dt>字典推导式</dt>
+                    <dd>
+                        <pre><code>squared = {x: x**2 for x in range(10)}</code></pre>
+                    </dd>
+
+                    <dt>保留顺序特性</dt>
+                    <dd>📌 Python 3.7+ 字典保持插入顺序</dd>
+                </dl>
+
+                <h3>集合操作</h3>
+                <dl>
+                    <dt>数学集合运算</dt>
+                    <dd>
+                        <pre><code>a = {1,2,3}
+b = {3,4,5}
+print(a & b)  # 交集 {3}
+print(a | b)  # 并集 {1,2,3,4,5}
+print(a - b)  # 差集 {1,2}</code></pre>
+                    </dd>
+                </dl>
+
+                <h2>函数式编程</h2>
+                <h3>生成器表达式</h3>
+                <dl>
+                    <dt>内存优化示例</dt>
+                    <dd>
+                        <pre><code># 列表推导式（内存全量存储）
+squares_list = [x**2 for x in range(1000000)]
+
+# 生成器表达式（惰性计算）
+squares_gen = (x**2 for x in range(1000000))</code></pre>
+                        <p>💡 优势：处理大数据时内存效率提升90%+</p>
+                    </dd>
+                </dl>
+
+                <h3>装饰器模式</h3>
+                <dl>
+                    <dt>带参数装饰器</dt>
+                    <dd>
+                        <pre><code>def retry(max_attempts=3):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for _ in range(max_attempts):
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    print(f"Retrying: {str(e)}")
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+@retry(max_attempts=5)
+def fetch_data():
+    # 网络请求代码...</code></pre>
+                    </dd>
+                </dl>
+
+                <h2>面向对象编程</h2>
+                <h3>魔法方法</h3>
+                <dl>
+                    <dt>__enter__和__exit__</dt>
+                    <dd>
+                        <pre><code>class FileManager:
+    def __init__(self, filename, mode):
+        self.filename = filename
+        self.mode = mode
+        self.file = None
+
+    def __enter__(self):
+        self.file = open(self.filename, self.mode)
+        return self.file
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.file:
+            self.file.close()
+
+# 使用示例
+with FileManager('demo.txt', 'w') as f:
+    f.write('Hello World')</code></pre>
+                        <p>🔒 安全优势：自动资源管理，避免文件句柄泄漏</p>
+                    </dd>
+                </dl>
+
+                <h2>异步编程</h2>
+                <h3>async/await语法</h3>
+                <dl>
+                    <dt>IO密集型任务优化</dt>
+                    <dd>
+                        <pre><code>import aiohttp
+import asyncio
+
+async def fetch_url(session, url):
+    async with session.get(url) as response:
+        return await response.text()
+
+async def main():
+    async with aiohttp.ClientSession() as session:
+        tasks = [
+            fetch_url(session, 'https://example.com'),
+            fetch_url(session, 'https://python.org')
+        ]
+        results = await asyncio.gather(*tasks)
+        return results
+
+# 执行异步任务
+loop = asyncio.get_event_loop()
+results = loop.run_until_complete(main())</code></pre>
+                        <p>⚡ 性能提升：相比同步请求，并发量提升10倍+</p>
+                    </dd>
+                </dl>
+
+                <h2>现代开发实践</h2>
+                <h3>类型提示</h3>
+                <dl>
+                    <dt>函数注解示例</dt>
+                    <dd>
+                        <pre><code>from typing import List, Dict, Union
+
+def process_data(
+    data: List[Dict[str, Union[int, str]]],
+    threshold: float = 0.5
+) -> List[str]:
+    # 类型明确的处理逻辑
+    return [item['name'] for item in data if item['score'] > threshold]</code></pre>
+                        <p>🔧 工具支持：配合mypy进行静态类型检查</p>
+                    </dd>
+                </dl>
+
+                <h3>虚拟环境管理</h3>
+                <dl>
+                    <dt>推荐工作流</dt>
+                    <dd>
+                        <pre><code>python -m venv .venv          # 创建虚拟环境
+source .venv/bin/activate    # Linux/macOS激活
+.venv\Scripts\activate       # Windows激活
+pip install -r requirements.txt  # 安装依赖
+pip freeze > requirements.txt   # 导出依赖</code></pre>
+                        <p>📦 包管理：使用pip-tools保持依赖锁定</p>
+                    </dd>
+                </dl>
+
+                <h2>常见陷阱避免</h2>
+                <ul class="warning">
+                    <li>⚠️ 避免在循环内修改正在迭代的列表</li>
+                    <li>⚠️ 谨慎使用eval()函数（存在安全风险）</li>
+                    <li>⚠️ 注意浮点数精度问题（推荐使用decimal模块）</li>
+                    <li>⚠️ 多线程编程注意GIL限制（IO密集型适用）</li>
+                </ul>
             </div>
         </div>
     </body>
