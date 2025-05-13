@@ -13,7 +13,7 @@
     });
 
     // 初始化参数
-    let mouseX = canvas.width / 2, mouseY = canvas.height / 2;
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
     const trailConfig = {
         maxTrails: 50,
         trailSpeed: 0.9,
@@ -22,7 +22,7 @@
 
     let trails = [];
     for(let i = 0; i < trailConfig.maxTrails; i++) {
-        trails.push({ x: 0, y: 0 });
+        trails.push({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
     }
 
     // 初始化Canvas尺寸
