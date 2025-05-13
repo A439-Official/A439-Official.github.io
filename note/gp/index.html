@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>GithubPage</title>
+        <title>GitHubPage</title>
         <link rel="stylesheet" href="/css/maintheme.css" type="text/css" />
         <script src="/js/main.js" type="text/javascript" defer></script>
     </head>
@@ -13,29 +13,116 @@
 
         <div class="main">
             <div class="content">
-                <h1 class="title">GithubPage</h1>
-                <h2>教程:如何在GithubPage上搭建个人页面</h2>
+                <h1 class="title">GitHubPage</h1>
+
+                <h2>教程：从零搭建个人静态站点</h2>
                 <p>
-                    GithubPage是一个基于Github仓库的静态页面托管服务,可以用来搭建个人博客、项目展示、作品展示等
+                    GitHub Pages 是 GitHub 提供的免费静态网站托管服务，支持自定义域名、HTTPS
+                    加密和持续集成部署，特别适合个人博客、项目文档和作品集展示
                 </p>
-                <p>本教程将介绍如何在GithubPage上搭建个人页面,并详细介绍相关配置和注意事项</p>
-                <h2>第一步:注册Github账号</h2>
-                <p>(已有Github账号的可直接跳到下一步)</p>
+
+                <h2>第一步：账号准备</h2>
+                <h3>1.1 注册 GitHub 账号</h3>
                 <p>
-                    访问<a href="https://github.com/" target="_blank">Github官网</a>,点击<code
-                        >Sign up</code
-                    >按钮,填写相关信息,完成注册
+                    访问
+                    <a href="https://github.com/signup" target="_blank">GitHub 注册页面</a
+                    >，建议使用企业邮箱注册（需验证）
                 </p>
-                <p>注册成功后,你会收到一封确认邮件,点击邮件中的链接激活你的账号。</p>
-                <h2>第二步:创建仓库</h2>
+
+                <h3>1.2 启用双重验证</h3>
+                <p>进入 <code>Settings > Account security</code> 启用 2FA，提升账户安全性</p>
+
+                <h2>第二步：创建站点仓库</h2>
+                <h3>2.1 仓库命名规范</h3>
                 <p>
-                    新建一个名为<code>username.github.io</code>的仓库,其中<code>username</code>为你的Github用户名
+                    必须命名为 <code>username.github.io</code>（严格区分大小写），其中
+                    <code>username</code> 为你的 GitHub 用户名
                 </p>
-                <p>仓库里新建一个名为<code>index.html</code>的文件,此为你的页面的入口文件</p>
-                <h2>第三步:编写文件</h2>
-                <p>略</p>
-                <h2>第四步:完成!</h2>
-                <p>完成以上步骤后,你的GithubPage就已经搭建完成了,你可以通过仓库名访问你的页面</p>
+
+                <h3>2.2 初始化仓库</h3>
+                <p>
+                    推荐初始化时添加 <code>README.md</code> 文件，可勾选
+                    <code>Add a README file</code> 选项
+                </p>
+
+                <h2>第三步：内容开发</h2>
+                <h3>3.1 基础文件结构</h3>
+                <pre>
+username.github.io/
+├── index.html       # 站点入口文件
+├── css/
+│   └── style.css    # 样式表
+├── js/
+│   └── main.js      # 脚本文件
+└── images/
+    └── logo.png     # 图片资源
+                </pre>
+
+                <h3>3.3 使用 Jekyll 构建（高级）</h3>
+                <ol>
+                    <li>在仓库根目录创建 <code>_config.yml</code> 配置文件</li>
+                    <li>支持 Markdown 文档自动转换</li>
+                    <li>内置主题选择：进入 <code>Settings > Pages > Theme Chooser</code></li>
+                </ol>
+
+                <h2>第四步：部署配置</h2>
+                <h3>4.1 基础部署</h3>
+                <p>
+                    提交代码后，访问
+                    <code>https://username.github.io</code> 即可查看站点（部署可能需要1-2分钟）
+                </p>
+
+                <h3>4.2 自定义域名</h3>
+                <ol>
+                    <li>
+                        在域名服务商处配置 <code>CNAME</code> 记录指向
+                        <code>username.github.io</code>
+                    </li>
+                    <li>在仓库根目录创建 <code>CNAME</code> 文件（无扩展名），内容为你的域名</li>
+                </ol>
+
+                <h3>4.3 HTTPS 强制</h3>
+                <p>进入 <code>Settings > Pages</code> 启用 <code>Enforce HTTPS</code> 选项</p>
+
+                <h2>第五步：高级优化</h2>
+                <h3>5.1 SEO 优化</h3>
+                <ul>
+                    <li>添加 <code>&lt;meta name="description"&gt;</code> 标签</li>
+                    <li>生成 <code>sitemap.xml</code> 并提交至 Google Search Console</li>
+                </ul>
+
+                <h3>5.2 性能优化</h3>
+                <ul>
+                    <li>启用 Gzip 压缩（通过 <code>.github/workflows/pages.yml</code> 配置）</li>
+                    <li>使用 <code>&lt;picture&gt;</code> 标签实现响应式图片</li>
+                </ul>
+
+                <h3>5.3 持续集成</h3>
+                <p>通过 GitHub Actions 实现自动化部署：</p>
+                <pre><code>name: Deploy GitHub Pages
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public</code></pre>
+
+                <h2>常见问题</h2>
+                <details>
+                    <summary>Q: 修改后页面未更新？</summary>
+                    <p>A: 清除浏览器缓存或尝试强制刷新（Ctrl+F5），部署延迟最长可达10分钟</p>
+                </details>
+                <details>
+                    <summary>Q: 如何使用自定义404页面？</summary>
+                    <p>A: 在仓库根目录创建 <code>404.html</code> 文件，GitHub Pages 会自动识别</p>
+                </details>
             </div>
         </div>
     </body>
