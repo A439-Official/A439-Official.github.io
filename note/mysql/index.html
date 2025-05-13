@@ -13,40 +13,157 @@
         <div class="main">
             <div class="content">
                 <h1 class="title">MySQL</h1>
-                <p>
-                    MySQL 是最流行的关系型数据库管理系统，在 WEB 应用方面 MySQL 是最好的
-                    RDBMS(Relational Database Management System：关系数据库管理系统)应用软件之一
-                </p>
 
-                <h2>SHOW</h2>
-                <h3>DATABASES</h3>
-                <p>SHOW DATABASES;</p>
-                <h3>TABLES</h3>
-                <p>SHOW TABLES FROM 数据库名;</p>
-                <h3>USERS</h3>
-                <p>SHOW USERS;</p>
-                <h3>GRANTS</h3>
-                <p>SHOW GRANTS FOR '用户名'@'主机名';</p>
+                <h2>基础管理命令</h2>
+                <h3>数据库操作</h3>
+                <dl>
+                    <dt>显示数据库</dt>
+                    <dd>
+                        <pre><code>SHOW DATABASES [LIKE 'pattern'];</code></pre>
+                    </dd>
 
-                <h2>CREATE</h2>
-                <h3>DATABASE</h3>
-                <p>CREATE DATABASE 数据库名 参数;</p>
-                <h3>TABLE</h3>
-                <p>CREATE TABLE 表名 (列名 数据类型 约束, ......);</p>
-                <h3>INDEX</h3>
-                <p>CREATE INDEX 索引名 ON 表名 (列名);</p>
-                <h3>USER</h3>
-                <p>CREATE USER '用户名'@'主机名' IDENTIFIED BY '密码';</p>
+                    <dt>创建数据库</dt>
+                    <dd>
+                        <pre><code>CREATE DATABASE [IF NOT EXISTS] dbname
+    [CHARACTER SET utf8mb4]
+    [COLLATE utf8mb4_unicode_ci];</code></pre>
+                        <p>💡 建议：生产环境默认使用<code>utf8mb4</code>字符集</p>
+                    </dd>
 
-                <h2>DROP</h2>
-                <h3>DATABASE</h3>
-                <p>DROP DATABASE 数据库名;</p>
-                <h3>TABLE</h3>
-                <p>DROP TABLE 表名;</p>
-                <h3>INDEX</h3>
-                <p>DROP INDEX 索引名 ON 表名;</p>
-                <h3>USER</h3>
-                <p>DROP USER '用户名'@'主机名';</p>
+                    <dt>删除数据库</dt>
+                    <dd>
+                        <pre><code>DROP DATABASE [IF EXISTS] dbname;</code></pre>
+                        <p>⚠️ 警告：该操作不可逆，建议先执行<code>mysqldump</code>备份</p>
+                    </dd>
+                </dl>
+
+                <h3>用户权限管理</h3>
+                <dl>
+                    <dt>创建用户</dt>
+                    <dd>
+                        <pre><code>CREATE USER 'app_user'@'%.example.com'
+    IDENTIFIED BY '强密码要求'
+    [REQUIRE SSL]
+    [WITH MAX_QUERIES_PER_HOUR 1000];</code></pre>
+                        <p>🔒 安全建议：遵循最小权限原则，避免使用<code>'%'</code>通配符</p>
+                    </dd>
+
+                    <dt>授权管理</dt>
+                    <dd>
+                        <pre><code>GRANT SELECT, INSERT ON dbname.* TO 'app_user'@'host';
+GRANT ALL PRIVILEGES ON dbname.* TO 'admin'@'localhost' WITH GRANT OPTION;</code></pre>
+                        <p>📝 记录：使用<code>SHOW GRANTS</code>验证权限配置</p>
+                    </dd>
+                </dl>
+
+                <h2>数据定义语言(DDL)</h2>
+                <h3>表结构操作</h3>
+                <dl>
+                    <dt>创建表</dt>
+                    <dd>
+                        <pre><code>CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_email (email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</code></pre>
+                        <p>🔧 关键特性：</p>
+                        <ul>
+                            <li>自动递增主键</li>
+                            <li>唯一约束</li>
+                            <li>默认值设置</li>
+                            <li>显式指定存储引擎</li>
+                        </ul>
+                    </dd>
+
+                    <dt>修改表结构</dt>
+                    <dd>
+                        <pre><code>ALTER TABLE orders
+    ADD COLUMN total_amount DECIMAL(10,2) NOT NULL,
+    MODIFY COLUMN status ENUM('pending','paid','shipped') NOT NULL DEFAULT 'pending',
+    DROP INDEX idx_order_no,
+    ADD INDEX idx_customer_id (customer_id);</code></pre>
+                        <p>⚠️ 注意：生产环境修改大表需在维护窗口操作</p>
+                    </dd>
+                </dl>
+
+                <h3>索引优化</h3>
+                <dl>
+                    <dt>创建索引</dt>
+                    <dd>
+                        <pre><code>CREATE INDEX idx_last_name ON employees(last_name);
+CREATE UNIQUE INDEX idx_unique_email ON users(email);</code></pre>
+                        <p>📊 最佳实践：</p>
+                        <ul>
+                            <li>联合索引字段顺序遵循最左前缀原则</li>
+                            <li>定期执行<code>ANALYZE TABLE</code>更新统计信息</li>
+                            <li>避免对频繁更新的列建索引</li>
+                        </ul>
+                    </dd>
+                </dl>
+
+                <h2>数据查询优化</h2>
+                <h3>执行计划分析</h3>
+                <dl>
+                    <dt>EXPLAIN命令</dt>
+                    <dd>
+                        <pre><code>EXPLAIN SELECT * FROM orders
+    WHERE customer_id = 123
+    ORDER BY order_date DESC
+    LIMIT 10;</code></pre>
+                        <p>🔍 关键指标：</p>
+                        <ul>
+                            <li>type：访问类型（ALL < index < range < ref < eq_ref < const）</li>
+                            <li>key：实际使用的索引</li>
+                            <li>rows：预计扫描行数</li>
+                        </ul>
+                    </dd>
+                </dl>
+
+                <h3>高级查询</h3>
+                <dl>
+                    <dt>窗口函数(MySQL 8.0+)</dt>
+                    <dd>
+                        <pre><code>SELECT 
+    department,
+    salary,
+    RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS dept_rank
+FROM employees;</code></pre>
+                    </dd>
+
+                    <dt>JSON支持</dt>
+                    <dd>
+                        <pre><code>SELECT data->'$.contact.email' FROM profiles;
+UPDATE settings SET config = JSON_SET(config, '$.logging.level', 'debug');</code></pre>
+                    </dd>
+                </dl>
+
+                <h2>维护与备份</h2>
+                <dl>
+                    <dt>逻辑备份</dt>
+                    <dd>
+                        <pre><code>mysqldump -u root -p --single-transaction --routines --events dbname > backup.sql</code></pre>
+                        <p>💾 恢复命令：<code>mysql -u root -p dbname < backup.sql</code></p>
+                    </dd>
+
+                    <dt>物理备份</dt>
+                    <dd>
+                        <pre><code>innobackupex --user=root --password=secret /backup/dir</code></pre>
+                        <p>⏱ 建议：配合Percona XtraBackup实现热备</p>
+                    </dd>
+                </dl>
+
+                <h2>安全加固建议</h2>
+                <ol>
+                    <li>禁用本地文件加载：<code>SET GLOBAL local_infile=0;</code></li>
+                    <li>限制访问来源：<code>bind-address = 192.168.1.100</code></li>
+                    <li>
+                        启用审计插件：<code>INSTALL PLUGIN audit_log SONAME 'audit_log.so';</code>
+                    </li>
+                    <li>定期轮换密码：设置<code>password_lifetime</code>参数</li>
+                    <li>监控慢查询：配置<code>long_query_time=2</code></li>
+                </ol>
             </div>
         </div>
     </body>
