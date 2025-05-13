@@ -89,6 +89,7 @@ div.main div.content {
     background-color: #0000007f;
     width: 70%;
     font-size: 20px;
+    line-height: 1.25;
 }
 
 div.main div.content a {
