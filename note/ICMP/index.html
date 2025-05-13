@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>ICMP代码/类型</title>
+        <title>ICMP</title>
         <link rel="stylesheet" href="/css/maintheme.css" type="text/css" />
         <script src="/js/main.js" type="text/javascript" defer></script>
     </head>
@@ -12,7 +12,130 @@
         <div class="header"></div>
         <div class="main">
             <div class="content">
-                <h1 class="title">ICMP代码/类型</h1>
+                <h1 class="title">ICMP</h1>
+
+                <h2>协议概述</h2>
+                <p>
+                    ICMP（Internet Control Message
+                    Protocol）是IP协议簇的核心成员，工作在网络层（OSI第3层），主要用于：
+                </p>
+                <ul>
+                    <li>传递错误报告（如目标不可达、超时）</li>
+                    <li>执行网络诊断（如Ping/Traceroute）</li>
+                    <li>实现路径MTU发现</li>
+                </ul>
+
+                <h2>消息类型分类</h2>
+                <h3>诊断消息类</h3>
+                <dl>
+                    <dt>类型 8 - 回显请求（Echo Request）</dt>
+                    <dd>由Ping命令发送，用于检测主机可达性</dd>
+
+                    <dt>类型 0 - 回显应答（Echo Reply）</dt>
+                    <dd>响应回显请求，计算往返时间（RTT）</dd>
+
+                    <dt>类型 13/14 - 时间戳请求/应答</dt>
+                    <dd>用于时钟同步，已逐渐被NTP取代</dd>
+                </dl>
+
+                <h3>错误报告类</h3>
+                <dl>
+                    <dt>类型 3 - 目标不可达</dt>
+                    <dd>
+                        <ul>
+                            <li>代码 0: 网络不可达</li>
+                            <li>代码 1: 主机不可达</li>
+                            <li>代码 2: 协议不可达（端口未监听）</li>
+                            <li>代码 3: 端口不可达（UDP特有）</li>
+                            <li>代码 13: 通信被管理员禁止</li>
+                        </ul>
+                    </dd>
+
+                    <dt>类型 11 - 超时（TTL Exceeded）</dt>
+                    <dd>
+                        <ul>
+                            <li>代码 0: 传输中TTL耗尽（Traceroute原理）</li>
+                            <li>代码 1: 分片重组超时</li>
+                        </ul>
+                    </dd>
+
+                    <dt>类型 5 - 重定向</dt>
+                    <dd>路由器建议更优路径（现代网络较少使用）</dd>
+                </dl>
+
+                <h3>信息类消息</h3>
+                <dl>
+                    <dt>类型 15 - 地址掩码请求/应答</dt>
+                    <dd>已过时，被DHCP取代</dd>
+
+                    <dt>类型 17/18 - 子网掩码请求/应答</dt>
+                    <dd>IPv6中不再使用</dd>
+                </dl>
+
+                <h2>现代应用场景</h2>
+                <h3>网络诊断工具</h3>
+                <table>
+                    <tr>
+                        <th>工具</th>
+                        <th>使用类型</th>
+                        <th>工作原理</th>
+                    </tr>
+                    <tr>
+                        <td>Ping</td>
+                        <td>8/0</td>
+                        <td>发送Echo Request并等待Echo Reply</td>
+                    </tr>
+                    <tr>
+                        <td>Traceroute</td>
+                        <td>11/0</td>
+                        <td>利用TTL递减触发超时响应</td>
+                    </tr>
+                    <tr>
+                        <td>PathPing</td>
+                        <td>混合使用</td>
+                        <td>统计路径上的丢包率</td>
+                    </tr>
+                </table>
+
+                <h3>安全增强实践</h3>
+                <ol>
+                    <li>限制ICMP速率防止DoS攻击</li>
+                    <li>
+                        在防火墙设置中：
+                        <ul>
+                            <li>允许必要类型（0/8/3/11）</li>
+                            <li>阻断高危类型（5/9/10）</li>
+                        </ul>
+                    </li>
+                    <li>启用ICMPv6邻居发现保护</li>
+                </ol>
+
+                <h2>IPv6扩展</h2>
+                <p>ICMPv6新增关键功能：</p>
+                <ul>
+                    <li>邻居发现协议（NDP）</li>
+                    <li>重复地址检测（DAD）</li>
+                    <li>无状态地址自动配置（SLAAC）</li>
+                </ul>
+
+                <h2>协议分析示例</h2>
+                <h3>Wireshark抓包解读</h3>
+                <pre><code>Internet Control Message Protocol
+    Type: 8 (Echo (ping) request)
+    Code: 0
+    Checksum: 0x2c90 [correct]
+    Identifier: 0x0001
+    Sequence number: 1
+    Data (32 bytes)</code></pre>
+
+                <h3>常见故障排查</h3>
+                <dl>
+                    <dt>目标不可达(Type 3)</dt>
+                    <dd>检查路由表、ACL规则、服务状态</dd>
+
+                    <dt>TTL超时(Type 11)</dt>
+                    <dd>验证路由循环或路径MTU设置</dd>
+                </dl>
             </div>
         </div>
     </body>
