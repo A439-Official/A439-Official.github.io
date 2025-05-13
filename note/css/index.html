@@ -13,46 +13,86 @@
         <div class="main">
             <div class="content">
                 <h1 class="title">CSS</h1>
-                <h2>简介</h2>
+
+                <h2>核心概念</h2>
+                <h3>盒模型解析</h3>
+                <p>box-sizing: 控制元素尺寸计算方式（content-box/border-box）</p>
+                <p>标准盒模型：width = 内容宽度（不包含padding/border）</p>
                 <p>
-                    CSS(Cascading Style Sheets,层叠样式表),是一种用来为结构化文档(如 HTML 文档或 XML
-                    应用)添加样式(字体,间距和颜色等)的计算机语言
+                    IE盒模型：width = 内容宽度 + padding + border（通过box-sizing: border-box实现）
                 </p>
-                <h2>属性</h2>
-                <p>background: 设置背景颜色或图片</p>
-                <p>background-color: 设置背景颜色</p>
-                <p>background-image: 设置背景图片</p>
-                <p>background-repeat: 设置背景图片是否重复</p>
-                <p>background-position: 设置背景图片的位置</p>
-                <p>background-size: 设置背景图片的大小</p>
-                <p>border: 设置边框</p>
-                <p>border-width: 设置边框宽度</p>
-                <p>border-style: 设置边框样式</p>
-                <p>border-color: 设置边框颜色</p>
-                <p>border-radius: 设置边框圆角</p>
-                <p>color: 设置字体颜色</p>
-                <p>font-family: 设置字体</p>
-                <p>font-size: 设置字体大小</p>
-                <p>font-style: 设置字体样式</p>
-                <p>font-weight: 设置字体粗细</p>
-                <p>height: 设置高度</p>
-                <p>width: 设置宽度</p>
-                <p>margin: 设置外边距</p>
-                <p>padding: 设置内边距</p>
-                <p>text-align: 设置文本对齐方式</p>
-                <p>text-decoration: 设置文本装饰</p>
-                <p>vertical-align: 设置垂直对齐方式</p>
-                <p>display: 设置元素的显示方式</p>
-                <p>position: 设置元素的定位方式</p>
-                <p>top/buttom/left/right: 设置元素的位置</p>
-                <p>z-index: 设置元素的堆叠顺序</p>
-                <p>opacity: 设置元素的透明度</p>
-                <p>overflow: 设置元素溢出内容的处理方式</p>
-                <p>cursor: 设置鼠标光标的形状</p>
-                <p>box-shadow: 设置元素的阴影</p>
-                <p>transition: 设置元素的过渡效果</p>
-                <p>animation: 设置动画效果</p>
-                <p>flex: 设置弹性盒子</p>
+
+                <h3>选择器体系</h3>
+                <p>类选择器(.class)：最常用选择器</p>
+                <p>ID选择器(#id)：唯一标识选择器（慎用！）</p>
+                <p>属性选择器([attr])：精准定位元素</p>
+                <p>伪类选择器(:hover)：状态选择器（支持动态交互）</p>
+                <p>伪元素选择器(::before)：内容生成技术</p>
+
+                <h2>布局系统</h2>
+                <h3>传统布局</h3>
+                <p>float: 创建浮动布局（需配合clear使用）</p>
+                <p>position: 绝对定位（absolute/relative/fixed/sticky）</p>
+                <p>display: 传统显示模式（block/inline/inline-block）</p>
+
+                <h3>现代布局</h3>
+                <p>Flexbox布局：</p>
+                <ul>
+                    <li>display: flex 激活弹性容器</li>
+                    <li>flex-direction: 主轴方向</li>
+                    <li>justify-content: 主轴对齐</li>
+                    <li>align-items: 交叉轴对齐</li>
+                    <li>flex-wrap: 换行控制</li>
+                </ul>
+                <p>Grid布局：</p>
+                <ul>
+                    <li>display: grid 创建网格容器</li>
+                    <li>grid-template-columns: 定义列轨道</li>
+                    <li>grid-template-rows: 定义行轨道</li>
+                    <li>grid-gap: 网格间距</li>
+                    <li>grid-area: 区域命名</li>
+                </ul>
+
+                <h2>视觉呈现</h2>
+                <h3>高级属性</h3>
+                <p>clip-path: 自定义形状裁剪</p>
+                <p>transform: 2D/3D变形（translate/scale/rotate/skew）</p>
+                <p>filter: 滤镜效果（blur/grayscale/contrast等）</p>
+                <p>backdrop-filter: 背景模糊效果（毛玻璃效果）</p>
+                <p>@media: 媒体查询（响应式设计核心）</p>
+
+                <h3>动画系统</h3>
+                <p>@keyframes: 定义关键帧动画</p>
+                <p>animation: 复合属性（控制动画名称/时长/延迟等）</p>
+                <p>transition: 过渡效果（配合:hover等状态使用）</p>
+
+                <h2>现代特性</h2>
+                <h3>变量系统</h3>
+                <p>--custom-property: 定义CSS变量</p>
+                <p>var()函数: 使用CSS变量</p>
+
+                <h3>预处理支持</h3>
+                <p>Sass/Less: 嵌套规则、混合宏、函数等特性</p>
+                <p>PostCSS: 未来CSS语法转换工具</p>
+
+                <h2>性能优化</h2>
+                <ol>
+                    <li>避免使用@import引入样式表</li>
+                    <li>合理使用will-change属性</li>
+                    <li>限制复杂选择器的使用</li>
+                    <li>采用CSS containment隔离样式</li>
+                    <li>使用CSSOM优化动态样式</li>
+                </ol>
+
+                <h2>最佳实践建议</h2>
+                <ol>
+                    <li>优先使用CSS变量维护主题系统</li>
+                    <li>复杂布局优先采用Grid布局方案</li>
+                    <li>动画优先使用transform/opacity实现</li>
+                    <li>移动端适配采用rem+vw单位方案</li>
+                    <li>避免!important过度使用（调试时除外）</li>
+                    <li>重要样式采用内联方式提升关键渲染路径</li>
+                </ol>
             </div>
         </div>
     </body>
