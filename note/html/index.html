@@ -1,75 +1,87 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HTML</title>
+        <link rel="stylesheet" href="/css/maintheme.css" type="text/css" />
+        <script src="/js/main.js" type="text/javascript" defer></script>
+    </head>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML</title>
-    <link rel="stylesheet" href="/css/maintheme.css" type="text/css" />
-    <script src="/js/main.js" type="text/javascript" defer></script>
-</head>
+    <body>
+        <div class="header"></div>
+        <div class="main">
+            <div class="content">
+                <h1 class="title">HTML</h1>
 
-<body>
-    <div class="header"></div>
-    <div class="main">
-        <div class="content">
-            <h1 class="title">HTML</h1>
-            <h2>简介</h2>
-            <p>超文本标记语言（英语：HyperText Markup Language，简称：HTML）是一种用于创建网页的标准标记语言</p>
-            <h2>元素</h2>
-            <p>&lt;!DOCTYPE&gt;:定义文档类型</p>
-            <p>&lt;html&gt;:定义文档</p>
-            <p>&lt;head&gt;:定义文档信息</p>
-            <p>&lt;title&gt;:定义文档标题</p>
-            <p>&lt;body&gt;:定义文档主体</p>
-            <p>&lt;link&gt;:定义文档与外部资源的关系</p>
-            <p>&lt;h1&gt;~&lt;h6&gt;:定义标题</p>
-            <p>&lt;p&gt;:定义段落</p>
-            <p>&lt;a&gt;:定义链接</p>
-            <p>&lt;img&gt;:定义图像</p>
-            <p>&lt;br&gt;:定义换行</p>
-            <p>&lt;b&gt;:定义<b>粗体文本</b></p>
-            <p>&lt;em&gt;:定义<em>着重文字</em></p>
-            <p>&lt;i&gt;:定义<i>斜体字</i></p>
-            <p>&lt;small&gt;:定义<small>小号字</small></p>
-            <p>&lt;strong&gt;:定义<strong>加重语气</strong></p>
-            <p>&lt;sub&gt;:定义<sub>下标</sub></p>
-            <p>&lt;sup&gt;:定义<sup>上标</sup></p>
-            <p>&lt;ins&gt;:定义<ins>插入字</ins></p>
-            <p>&lt;del&gt;:定义<del>删除字</del></p>
-            <p>&lt;u&gt;:定义<u>下划线</u></p>
-            <p>&lt;em&gt;:定义<em>语气</em></p>
-            <p>&lt;code&gt;:定义<code>计算机代码</code></p>
-            <p>&lt;kbd&gt;:定义<kbd>键盘输入</kbd></p>
-            <p>&lt;samp&gt;:定义<samp>计算机输出</samp></p>
-            <p>&lt;var&gt;:定义<var>变量</var></p>
-            <p>&lt;pre&gt;:定义
-            <pre>预格式化文本</pre>
-            </p>
-            <p>&lt;abbr&gt;:定义<abbr>缩写</abbr></p>
-            <p>&lt;address&gt;:定义
-            <address>地址</address>
-            </p>
-            <p>&lt;bdo&gt;:定义<bdo>文字方向</bdo></p>
-            <p>&lt;blockquote&gt;:定义
-            <blockquote>长的引用</blockquote>
-            </p>
-            <p>&lt;q&gt;:定义<q>短的引用语</q></p>
-            <p>&lt;cite&gt;:定义<cite>引用、引证</cite></p>
-            <p>&lt;dfn&gt;:定义<dfn>一个定义项目</dfn></p>
-            <h2>属性</h2>
-            <p>href:定义链接目标</p>
-            <p>target:定义链接的打开方式</p>
-            <p>rel:定义链接与目标页面的关系</p>
-            <p>donwload:提示浏览器下载链接目标而不是导航到该目标</p>
-            <p>title:定义链接的额外信息，当鼠标悬停在链接上时显示的工具提示</p>
-            <p>id:用于链接锚点，通常在同一页面中跳转到某个特定位置</p>
-            <p>hreflang:指定链接的目标URL的语言</p>
-            <p>type:指定链接资源的MIME类型</p>
-            <p>class:用于指定元素的类名(CSS中定义)</p>
-            <p>style:直接在元素上定义CSS样式</p>
+                <h2>简介</h2>
+                <p>超文本标记语言（英语：HyperText Markup Language，简称：HTML）是构建万维网的基础技术，通过标记标签描述网页内容的结构和语义。最新版本HTML5引入了语义化标签和多媒体支持，显著提升了网页的可访问性和交互性。</p>
+
+                <h2>核心元素</h2>
+                <h3>文档结构</h3>
+                <p>&lt;!DOCTYPE&gt;: 声明文档类型为HTML5</p>
+                <p>&lt;html&gt;: 根元素，包含lang属性定义文档语言（例：lang="zh-CN"）</p>
+                <p>&lt;head&gt;: 包含元数据和资源链接</p>
+                <p>&lt;title&gt;: 显示在浏览器标签页的标题</p>
+                <p>&lt;body&gt;: 包含所有可见内容</p>
+
+                <h3>内容区块</h3>
+                <p>&lt;header&gt;: 页面头部（HTML5语义化标签）</p>
+                <p>&lt;nav&gt;: 导航链接容器（HTML5）</p>
+                <p>&lt;main&gt;: 页面主要内容（HTML5）</p>
+                <p>&lt;section&gt;: 主题分组容器（HTML5）</p>
+                <p>&lt;article&gt;: 独立内容区块（HTML5）</p>
+                <p>&lt;aside&gt;: 侧边栏内容（HTML5）</p>
+                <p>&lt;footer&gt;: 页面底部（HTML5）</p>
+
+                <h3>文本格式</h3>
+                <p>&lt;h1&gt;~&lt;h6&gt;: 六级标题体系（注意SEO最佳实践）</p>
+                <p>&lt;p&gt;: 段落容器，建议每个段落单独使用</p>
+                <p>&lt;br&gt;: 强制换行（注意与CSS的white-space属性区分）</p>
+                <p>&lt;hr&gt;: 水平分隔线（HTML5中为语义化元素）</p>
+
+                <h3>多媒体</h3>
+                <p>&lt;img&gt;: 图像嵌入（需配合alt属性提升可访问性）</p>
+                <p>&lt;audio&gt;: 音频播放（HTML5新增，支持多种格式）</p>
+                <p>&lt;video&gt;: 视频播放（HTML5新增，支持controls属性）</p>
+                <p>&lt;canvas&gt;: 动态绘图（HTML5，通过JavaScript操作）</p>
+
+                <h3>表单元素</h3>
+                <p>&lt;form&gt;: 表单容器（action/method属性定义提交）</p>
+                <p>&lt;input&gt;: 多功能输入（type属性支持text/password/email等15+类型）</p>
+                <p>&lt;button&gt;: 可点击按钮（优于input type="button"的语义化选择）</p>
+                <p>&lt;select&gt;: 下拉选择框（配合&lt;option&gt;使用）</p>
+                <p>&lt;textarea&gt;: 多行文本输入</p>
+
+                <h2>重要属性</h2>
+                <h3>全局属性</h3>
+                <p>class: 定义CSS类选择器（可多类共存，例：class="btn primary"）</p>
+                <p>id: 唯一标识符（用于页面内锚点跳转和CSS/JavaScript操作）</p>
+                <p>style: 内联CSS样式（优先级高于外部样式表）</p>
+                <p>title: 悬停提示文本（辅助可访问性）</p>
+                <p>lang: 定义元素语言（例：lang="en"）</p>
+
+                <h3>链接相关</h3>
+                <p>href: 指定链接目标（支持相对/绝对路径和锚点）</p>
+                <p>target: 控制打开方式（_blank新标签页，_self当前页）</p>
+                <p>rel: 定义链接关系（例：nofollow/noopener/noreferrer）</p>
+                <p>download: 强制下载资源（需服务器配合Content-Disposition）</p>
+
+                <h3>表单增强</h3>
+                <p>required: 必填字段验证（HTML5内置验证）</p>
+                <p>placeholder: 输入框占位提示</p>
+                <p>autocomplete: 自动填充控制（on/off）</p>
+                <p>pattern: 正则表达式验证（需配合JavaScript使用）</p>
+
+                <h2>最佳实践建议</h2>
+                <ol>
+                    <li>优先使用语义化标签提升可访问性</li>
+                    <li>为所有图片添加有意义的alt文本</li>
+                    <li>使用ARIA属性增强复杂组件的可访问性</li>
+                    <li>表单字段添加label标签并通过for属性关联</li>
+                    <li>避免使用已废弃的标签（如&lt;font&gt;、&lt;center&gt;）</li>
+                </ol>
+            </div>
         </div>
-    </div>
-</body>
-
+    </body>
 </html>
