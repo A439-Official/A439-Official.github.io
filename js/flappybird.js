@@ -72,8 +72,8 @@ function updateBird(deltaTime) {
     }
 }
 function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight - 60;
+    canvas.width = document.documentElement.clientWidth;
+    canvas.height = document.documentElement.clientHeight - 60;
 }
 function keyDown(event) {
     if (event.key === " ") {
