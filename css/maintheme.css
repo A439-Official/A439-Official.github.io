@@ -100,9 +100,29 @@ div.main div.content p {
     margin: 10px;
 }
 
+div.main div.content pre,
+div.main div.content div code {
+    margin: 10px;
+    padding: 5px;
+    background-color: #00000080;
+    border-radius: 10px;
+    margin: 10px;
+}
+
 div.main div.content img.icon {
     width: 50%;
     max-width: 300px;
+}
+
+div.main div.content div.tip-box {
+    /* border: #ffffff solid 1px; */
+    border-left: #ffffff solid 5px;
+    background-color: #00000080;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    color: #ffffff;
+    font-size: 16px;
 }
 
 div.main div.content h1.title {
