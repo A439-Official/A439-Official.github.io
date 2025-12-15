@@ -31,6 +31,24 @@ body {
     padding: 20px;
 }
 
+::-webkit-scrollbar {
+    display: none;
+    /* Chrome Safari Opera */
+}
+
+div.container {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+
+
+
+
 /* 导航栏样式 */
 nav {
     background: rgba(0, 0, 0, 0.8);
