@@ -70,7 +70,7 @@
     position: relative;
 }
 
-.input-container::before {
+/* .input-container::before {
     content: '';
     position: absolute;
     top: 0;
@@ -79,7 +79,7 @@
     height: 100%;
     background: linear-gradient(var(--primary-1), var(--primary-2));
     border-radius: 12px 0 0 12px;
-}
+} */
 
 .neon-btn {
     width: 100%;
