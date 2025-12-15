@@ -1,22 +1,17 @@
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
     gap: 1.5rem;
     padding: 1rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-
 .cards-container-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(calc(25% - 1.5rem), 1fr));
     gap: 1.5rem;
     margin: 0 auto;
-}
-
-.cards-container-grid .card {
-    margin: 0;
 }
 
 .cards-container-flex {
@@ -29,10 +24,12 @@
 }
 
 .cards-container-flex .card {
-    flex: 1 1 300px;
+    /* 最小25%，最大50% */
+    flex: 1 1 calc(50% - 0.75rem);
+    min-width: calc(25% - 0.75rem);
+    max-width: calc(50% - 0.75rem);
     margin: 0;
 }
-
 
 /* Card 玻璃拟态样式 */
 .card {
@@ -52,54 +49,45 @@
         0 8px 32px rgba(0, 0, 0, 0.1),
         0 0 0 1px rgba(127, 255, 255, 0.1) inset,
         0 4px 12px rgba(0, 0, 0, 0.05);
+    /* 确保卡片不会超过最大宽度 */
+    box-sizing: border-box;
 }
 
-.card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    transition: left 0.6s;
+/* 响应式调整 */
+@media (max-width: 1200px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(calc(50% - 1.5rem), 1fr));
+    }
+
+    .cards-container-flex .card {
+        flex: 1 1 calc(50% - 0.75rem);
+        min-width: calc(50% - 0.75rem);
+        max-width: calc(50% - 0.75rem);
+    }
 }
 
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(127, 255, 255, 0.2), 0 6px 20px rgba(255, 127, 255, 0.3);
-}
-
-.card:hover::before {
-    left: 100%;
-}
-
-
-
-
-/* 响应式设计 */
 @media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    }
+
+    .cards-container-flex .card {
+        flex: 1 1 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+
     .card {
         padding: 1.5rem;
         margin: 1rem 0;
         border-radius: 12px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
     }
 }
 
-/* 暗色模式适配 */
-@media (prefers-color-scheme: dark) {
+/* 小屏幕设备（手机） */
+@media (max-width: 480px) {
     .card {
-        background: linear-gradient(135deg,
-                rgba(0, 0, 0, 0.3) 0%,
-                rgba(0, 0, 0, 0.2) 100%);
-        border-color: rgba(255, 255, 255, 0.15);
+        padding: 1rem;
+        margin: 0.75rem 0;
     }
-}
-
-/* 无障碍焦点样式 */
-.card:focus-within {
-    outline: 2px solid var(--primary-1);
-    outline-offset: 2px;
 }
