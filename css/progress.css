@@ -41,7 +41,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-lighter);
+    color: var(--text-light);
     font-weight: bold;
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
     position: relative;
@@ -78,7 +78,7 @@
     display: inline-block;
     padding: 14px 25px;
     background: linear-gradient(45deg, var(--primary-1), var(--primary-2));
-    color: var(--text-lighter);
+    color: var(--text-light);
     text-decoration: none;
     border-radius: 12px;
     font-weight: bold;
@@ -154,7 +154,7 @@
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    color: var(--text-lighter);
+    color: var(--text-light);
     font-size: 1em;
     transition: all 0.3s ease;
     position: relative;
@@ -208,9 +208,9 @@
     z-index: 2;
     font-weight: 600;
     font-size: 1.1em;
-    color: var(--text-lighter);
+    color: var(--text-light);
     transition: color 0.2s;
-    text-shadow: 0 0 4px var(--text-lighter);
+    text-shadow: 0 0 4px var(--text-light);
 }
 
 .btn-glow {

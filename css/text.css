@@ -58,7 +58,7 @@ a {
 }
 
 a:hover {
-    color: var(--text-lighter);
+    color: var(--text-light);
     text-shadow: 0 0 8px var(--primary-1), 0 0 16px var(--primary-2);
 }
 
@@ -145,7 +145,7 @@ pre code {
     font-family: 'Fira Code', 'Courier New', Courier, monospace;
     font-size: 0.95rem;
     line-height: 1.5;
-    color: var(--text-lighter);
+    color: var(--text-light);
     text-shadow: 0 0 2px rgba(127, 255, 255, 0.3);
 }
 
@@ -237,7 +237,7 @@ caption {
     margin: 0.5rem;
     font-weight: bold;
     font-size: 1.2rem;
-    color: var(--text-lighter);
+    color: var(--text-light);
     position: relative;
     padding: 0.5rem;
 }

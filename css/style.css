@@ -9,11 +9,11 @@
     --primary-1: #7fffff;
     --primary-2: #ff7fff;
     --bg-dark: #0d0d0d;
-    --bg-darker: #000000;
-    --text-light: #e0e0e0;
-    --text-lighter: #ffffff;
+    --text-light: #ffffff;
+    --text-dark: #000000;
     --text-shallow: #a4a4a4;
     --shadow-color: rgba(0, 0, 0, 0.3);
+    --bg-alpha: rgba(0, 0, 0, 0.884);
 }
 
 body {
@@ -90,7 +90,7 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--text-lighter);
+    color: var(--text-light);
     text-shadow: 0 0 8px var(--primary-1), 0 0 16px var(--primary-2);
 }
 
@@ -120,7 +120,7 @@ nav a.active::after {
 /* 平面风格按钮 */
 .btn {
     background: linear-gradient(45deg, var(--primary-1), var(--primary-2));
-    color: var(--text-lighter);
+    color: var(--text-light);
     border: none;
     padding: 10px 25px;
     border-radius: 8px;

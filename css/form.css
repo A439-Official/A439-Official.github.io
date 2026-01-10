@@ -249,8 +249,8 @@
     width: 100%;
     max-height: 200px;
     overflow-y: auto;
-    background: rgba(0, 0, 0, 0.95);
-    border: 2px solid var(--primary-1);
+    background: var(--bg-alpha);
+    border: 2px solid rgba(255, 255, 255, 0.5);
     border-top: none;
     border-radius: 0 0 12px 12px;
     box-shadow: 0 8px 32px var(--shadow-color);
@@ -266,20 +266,29 @@
 }
 
 .custom-select-option {
-    padding: 12px 20px;
+    padding: 12px 32px;
     color: var(--text-lighter);
     transition: background-color 0.2s ease;
     cursor: pointer;
 }
 
+
 .custom-select-option:hover {
-    background: rgba(127, 255, 255, 0.1);
+    background:
+        linear-gradient(var(--bg-alpha), var(--bg-alpha)) padding-box,
+        linear-gradient(45deg, var(--primary-1), var(--primary-2)) border-box;
+    border: 2px solid transparent;
+    border-radius: 10px;
 }
 
 .custom-select-option-selected {
-    background: rgba(127, 255, 255, 0.15);
-    color: var(--primary-1);
     font-weight: 500;
+    padding-left: 8px;
+}
+
+.custom-select-option-selected::before {
+    content: "▶";
+    margin-right: 8px;
 }
 
 /* 响应式调整 */
