@@ -38,7 +38,7 @@ p {
     padding-left: 15px;
 }
 
-p::before {
+/* p::before {
     content: "";
     position: absolute;
     left: 0;
@@ -47,7 +47,7 @@ p::before {
     width: 3px;
     background: var(--gradient-text);
     border-radius: 2px;
-}
+} */
 
 a {
     color: var(--primary-1);
