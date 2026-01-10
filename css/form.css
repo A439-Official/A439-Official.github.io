@@ -66,26 +66,6 @@
     background: rgba(127, 255, 255, 0.03);
 }
 
-
-.form-input option {
-    background: var(--shadow-color);
-    color: var(--text-lighter);
-    border-radius: 12px;
-    padding: 10px 20px;
-}
-
-.form-input option:checked {
-    background: linear-gradient(45deg, var(--primary-1), var(--primary-2));
-    color: var(--text-lighter);
-    font-weight: 600;
-}
-
-.form-input option:hover {
-    background: rgba(127, 255, 255, 0.2);
-    color: var(--text-lighter);
-}
-
-
 .input-container {
     position: relative;
 }
@@ -219,5 +199,96 @@
 
     to {
         transform: rotate(360deg);
+    }
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+}
+
+.custom-select-display {
+    width: 100%;
+    padding: 14px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--text-lighter);
+    font-size: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.custom-select-display:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.custom-select-open .custom-select-display {
+    border-color: var(--primary-1);
+    box-shadow: 0 0 16px var(--primary-1);
+    border-radius: 12px 12px 0 0;
+}
+
+.custom-select-arrow {
+    transition: transform 0.3s ease;
+    color: var(--text-light);
+}
+
+.custom-select-open .custom-select-arrow {
+    transform: rotate(180deg);
+    color: var(--primary-1);
+}
+
+.custom-select-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid var(--primary-1);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 8px 32px var(--shadow-color);
+    z-index: 1000;
+    display: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.custom-select-open .custom-select-options {
+    display: block;
+}
+
+.custom-select-option {
+    padding: 12px 20px;
+    color: var(--text-lighter);
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.custom-select-option:hover {
+    background: rgba(127, 255, 255, 0.1);
+}
+
+.custom-select-option-selected {
+    background: rgba(127, 255, 255, 0.15);
+    color: var(--primary-1);
+    font-weight: 500;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .custom-select-display {
+        padding: 12px 16px;
+    }
+
+    .custom-select-option {
+        padding: 10px 16px;
     }
 }
