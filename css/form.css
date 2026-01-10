@@ -1,4 +1,4 @@
-.foam-container {
+.form-container {
     max-width: 480px;
     margin: 60px auto;
     background: rgba(0, 0, 0, 0.6);
@@ -13,17 +13,17 @@
     overflow: hidden;
 }
 
-.foam-title {
+.form-title {
     font-size: 2.8em;
     text-align: center;
     margin-bottom: 40px;
     color: var(--primary-1);
     text-shadow: 0 0 12px var(--primary-1),
         0 0 24px var(--primary-2);
-    animation: neon-glow 1.5s ease-in-out infinite;
+    animation: form-glow 1.5s ease-in-out infinite;
 }
 
-@keyframes neon-glow {
+@keyframes form-glow {
 
     0%,
     100% {
@@ -66,6 +66,26 @@
     background: rgba(127, 255, 255, 0.03);
 }
 
+
+.form-input option {
+    background: var(--shadow-color);
+    color: var(--text-lighter);
+    border-radius: 12px;
+    padding: 10px 20px;
+}
+
+.form-input option:checked {
+    background: linear-gradient(45deg, var(--primary-1), var(--primary-2));
+    color: var(--text-lighter);
+    font-weight: 600;
+}
+
+.form-input option:hover {
+    background: rgba(127, 255, 255, 0.2);
+    color: var(--text-lighter);
+}
+
+
 .input-container {
     position: relative;
 }
@@ -81,7 +101,7 @@
     border-radius: 12px 0 0 12px;
 } */
 
-.neon-btn {
+.form-btn {
     width: 100%;
     padding: 16px;
     background: linear-gradient(45deg, var(--primary-1), var(--primary-2));
@@ -94,7 +114,7 @@
     margin-top: 12px;
 }
 
-.neon-btn:hover {
+.form-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 24px rgba(127, 255, 255, 0.3),
         0 8px 32px rgba(255, 127, 255, 0.4);
@@ -127,7 +147,7 @@
     transition: opacity 0.4s;
 }
 
-.neon-btn:hover .btn-glow {
+.form-btn:hover .btn-glow {
     opacity: 1;
 }
 
@@ -137,7 +157,7 @@
         padding: 24px;
     }
 
-    .neon-title {
+    .form-title {
         font-size: 2.2em;
         margin-bottom: 30px;
     }
@@ -175,12 +195,12 @@
     animation: shake 0.5s ease;
 }
 
-.neon-btn.loading .btn-text {
+.form-btn.loading .btn-text {
     visibility: hidden;
     opacity: 0;
 }
 
-.neon-btn.loading::after {
+.form-btn.loading::after {
     content: "◌";
     position: absolute;
     width: 100%;
