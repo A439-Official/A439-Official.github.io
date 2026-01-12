@@ -253,3 +253,73 @@ canvas#backgroundcanvas {
         opacity: 0;
     }
 }
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-alpha);
+    transition: all 0.4s ease;
+    border-radius: 34px;
+    border: 2px solid var(--text-shallow);
+}
+
+.slider::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, var(--primary-1), var(--primary-2));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 32px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 3px;
+    bottom: 3px;
+    background: var(--text-shallow);
+    transition: transform 0.4s ease;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+input:checked+.slider::after {
+    opacity: 1;
+}
+
+input:checked+.slider {
+    border-color: var(--bg-dark);
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+    background: #fff;
+}
+
+input:disabled+.slider {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
