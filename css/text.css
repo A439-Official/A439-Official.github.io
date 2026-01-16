@@ -35,18 +35,8 @@ p {
     max-width: 800px;
     margin: 10.9px 2rem;
     position: relative;
+    line-height: 1.6;
 }
-
-/* p::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: var(--gradient-text);
-    border-radius: 2px;
-} */
 
 a {
     color: var(--primary-1);
@@ -220,7 +210,7 @@ tbody tr:last-child td {
     border-bottom: none;
 }
 
-/* 斑马条纹效果（可选） */
+/* 斑马条纹效果 */
 tbody tr:nth-child(even) {
     background: rgba(0, 0, 0, 0.05);
 }
@@ -229,7 +219,7 @@ tbody tr:nth-child(even):hover {
     background: rgba(127, 255, 255, 0.07);
 }
 
-/* 表格标题下划线 */
+/* 表格标题 */
 caption {
     caption-side: top;
     text-align: left;
@@ -241,30 +231,100 @@ caption {
     padding: 0.5rem;
 }
 
+/* 响应式调整 */
 
-@media (max-width: 768px) {
+/* 平板设备 (768px - 1024px) */
+@media (max-width: 1024px) {
     h1 {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
+        margin-bottom: 1.2rem;
     }
 
     h2 {
-        font-size: 1.8rem;
-        margin: 1.5rem 0 1rem;
+        font-size: 1.9rem;
+        margin: 1.8rem 0 1.2rem;
+    }
+
+    p {
+        font-size: 1.05rem;
+        max-width: 90%;
+        margin: 10.9px 1.5rem;
+    }
+
+    pre {
+        padding: 1.2rem;
+        margin: 1.2rem 0;
+    }
+
+    pre code {
+        font-size: 0.9rem;
+    }
+
+    table {
+        margin: 1.2rem 0;
+    }
+
+    th,
+    td {
+        padding: 10px 14px;
+    }
+}
+
+/* 移动设备 (小于768px) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        display: block;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+        margin: 1.5rem 0 0.8rem;
+        display: block;
+        text-align: left;
     }
 
     h2::after {
-        height: 1.5px;
-        bottom: -3px;
+        content: none;
     }
 
     p {
         font-size: 1rem;
-        padding-left: 10px;
+        margin: 0.8rem 0;
+        padding-left: 0;
+        max-width: 100%;
+    }
+
+    /* 移除段落左侧线条 */
+    p::before {
+        content: none;
+    }
+
+    a {
+        padding: 0;
+    }
+
+    a::after {
+        height: 1px;
     }
 
     img {
         border-radius: 6px;
         margin: 1rem 0;
+        border-width: 1px;
+        display: block;
+        width: 100%;
+    }
+
+    img:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 255, 255, 0.1);
+    }
+
+    img::after {
+        content: none;
     }
 
     hr {
@@ -273,51 +333,187 @@ caption {
     }
 
     small {
-        font-size: 0.8em;
-    }
-
-    .glass-card {
-        padding: 20px;
+        font-size: 0.75em;
     }
 
     pre {
         padding: 1rem;
         margin: 1rem 0;
         border-radius: 6px;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
     }
 
     pre code {
         font-size: 0.85rem;
+        line-height: 1.4;
     }
 
-    pre::before {
-        font-size: 0.6rem;
-        top: 6px;
-        right: 8px;
-    }
-
-
+    /* 移动端表格容器 */
     .table-container {
         width: 100%;
         overflow-x: auto;
         margin: 1.5rem 0;
         border-radius: 6px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        -webkit-overflow-scrolling: touch;
     }
 
     table {
         margin: 0;
         border-radius: 0;
+        min-width: 500px;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
     }
 
     th,
     td {
         padding: 8px 12px;
         font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+    th::after,
+    td::after {
+        display: none;
     }
 
     caption {
         font-size: 1.1rem;
-        padding-left: 1rem;
+        padding: 0.5rem 0;
+        text-align: center;
+    }
+
+    thead {
+        position: sticky;
+        left: 0;
+    }
+}
+
+/* 小屏移动设备 (小于480px) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.7rem;
+        margin-bottom: 0.8rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+        margin: 1.2rem 0 0.6rem;
+    }
+
+    p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin: 0.6rem 0;
+    }
+
+    img {
+        margin: 0.8rem 0;
+        border-radius: 4px;
+    }
+
+    hr {
+        margin: 1.5rem 0;
+        height: 1px;
+    }
+
+    pre {
+        padding: 0.8rem;
+        margin: 0.8rem 0;
+        border-radius: 4px;
+    }
+
+    pre code {
+        font-size: 0.8rem;
+    }
+
+    .table-container {
+        margin: 1rem 0;
+        border-radius: 4px;
+    }
+
+    table {
+        min-width: 400px;
+    }
+
+    th,
+    td {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    caption {
+        font-size: 1rem;
+    }
+}
+
+/* 横屏模式优化 */
+@media (max-height: 600px) and (orientation: landscape) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    p {
+        font-size: 0.95rem;
+        max-width: 100%;
+    }
+
+    .table-container {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+    a:hover::after {
+        width: 0;
+    }
+
+    img:hover {
+        transform: none;
+        box-shadow: none;
+        border-color: transparent;
+    }
+
+    tbody tr:hover {
+        background: transparent;
+    }
+
+    tbody tr:active {
+        background: rgba(127, 255, 255, 0.05);
+    }
+}
+
+/* 深色模式优化 */
+@media (prefers-color-scheme: dark) {
+    pre {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    table {
+        background: rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* 减少动画 (无障碍) */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    img:hover {
+        transform: none;
     }
 }

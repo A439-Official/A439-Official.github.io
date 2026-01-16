@@ -2,7 +2,6 @@
     display: none;
 }
 
-
 * {
     margin: 0;
     padding: 0;
@@ -36,23 +35,17 @@ body {
     padding: 20px;
 }
 
+/* 滚动条隐藏 */
 ::-webkit-scrollbar {
     display: none;
-    /* Chrome Safari Opera */
 }
 
 div.container {
     scrollbar-width: none;
-    /* Firefox */
     -ms-overflow-style: none;
-    /* IE 10+ */
     overflow-x: hidden;
     overflow-y: scroll;
 }
-
-
-
-
 
 /* 导航栏样式 */
 nav {
@@ -159,36 +152,6 @@ nav a.active::after {
     left: 100%;
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-    }
-
-    .nav-links,
-    .auth-links {
-        flex-direction: column;
-        gap: 10px;
-        margin-left: 0;
-    }
-
-    .content {
-        padding: 20px;
-    }
-}
-
-@keyframes active-underline {
-    from {
-        transform: translateX(-100%);
-    }
-
-    to {
-        transform: translateX(0);
-    }
-}
-
 canvas#backgroundcanvas {
     position: fixed;
     top: 0;
@@ -199,7 +162,7 @@ canvas#backgroundcanvas {
     z-index: -1;
 }
 
-/* 将消息容器固定在右下角 */
+/* 消息容器 */
 .message-container {
     position: fixed;
     bottom: 20px;
@@ -235,7 +198,17 @@ canvas#backgroundcanvas {
     word-break: break-word;
 }
 
-/* 添加滑动动画 */
+/* 动画定义 */
+@keyframes active-underline {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
 @keyframes slideIn {
     from {
         transform: translateX(100%);
@@ -248,7 +221,6 @@ canvas#backgroundcanvas {
     }
 }
 
-/* 添加淡出动画 */
 @keyframes fadeOut {
     from {
         opacity: 1;
@@ -256,5 +228,186 @@ canvas#backgroundcanvas {
 
     to {
         opacity: 0;
+    }
+}
+
+/* 响应式调整 */
+
+/* 平板设备 (768px - 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 15px;
+        max-width: 95%;
+    }
+
+    nav {
+        padding: 12px 20px;
+        gap: 15px;
+    }
+
+    .content {
+        padding: 25px;
+        min-height: 350px;
+    }
+
+    .message-container {
+        max-width: 280px;
+        right: 15px;
+        bottom: 15px;
+    }
+}
+
+/* 移动设备 (小于768px) */
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+
+    .container {
+        padding: 12px;
+        max-width: 100%;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+    }
+
+    .nav-links,
+    .auth-links {
+        flex-direction: column;
+        gap: 8px;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    nav a {
+        padding: 10px 15px;
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
+
+    .content {
+        padding: 20px 15px;
+        min-height: 300px;
+        border-radius: 12px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .message-container {
+        position: fixed;
+        left: 50%;
+        right: auto;
+        bottom: 10px;
+        transform: translateX(-50%);
+        max-width: 90%;
+        width: calc(100% - 24px);
+    }
+
+    .message-message {
+        padding: 14px 16px;
+        border-radius: 10px;
+    }
+}
+
+/* 小屏移动设备 (小于480px) */
+@media (max-width: 480px) {
+    :root {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    nav {
+        padding: 10px 12px;
+        border-radius: 10px;
+    }
+
+    .content {
+        padding: 15px 12px;
+        border-radius: 10px;
+    }
+
+    .message-container {
+        bottom: 8px;
+        width: calc(100% - 20px);
+    }
+
+    .message-message {
+        padding: 12px 14px;
+    }
+
+    /* 调整按钮大小 */
+    .btn {
+        padding: 10px 16px;
+        font-size: 0.95rem;
+    }
+}
+
+/* 横屏模式 */
+@media (max-height: 600px) and (orientation: landscape) {
+    .container {
+        padding: 10px;
+    }
+
+    nav {
+        padding: 8px 15px;
+        margin-bottom: 15px;
+    }
+
+    .content {
+        min-height: 250px;
+        padding: 20px;
+    }
+
+    .message-container {
+        bottom: 10px;
+        right: 10px;
+        max-width: 250px;
+    }
+}
+
+/* 高DPI屏幕优化 */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    nav {
+        border-width: 0.5px;
+    }
+
+    .content {
+        border-width: 0.5px;
+    }
+}
+
+/* 打印样式 */
+@media print {
+
+    .message-container,
+    canvas#backgroundcanvas,
+    nav .btn {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    .content {
+        background: white !important;
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
     }
 }

@@ -14,6 +14,33 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* 霓虹标题样式 */
+.neon-title {
+    font-size: 2.8em;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--primary-1);
+    text-shadow: 0 0 12px var(--primary-1),
+        0 0 24px var(--primary-2);
+    animation: form-glow 1.5s ease-in-out infinite;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+@keyframes form-glow {
+
+    0%,
+    100% {
+        text-shadow: 0 0 12px var(--primary-1), 0 0 24px var(--primary-2);
+    }
+
+    50% {
+        text-shadow: 0 0 24px var(--primary-1), 0 0 36px var(--primary-2);
+    }
 }
 
 /* 进度条样式 */
@@ -30,6 +57,7 @@
     border: 2px solid rgba(127, 255, 255, 0.1);
     box-shadow: 0 0 10px rgba(127, 255, 255, 0.2);
     padding: 2px;
+    box-sizing: border-box;
 }
 
 .progress-fill {
@@ -46,6 +74,7 @@
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
     position: relative;
     overflow: hidden;
+    font-size: 0.9em;
 }
 
 .progress-fill::after {
@@ -66,19 +95,22 @@
     margin-top: 15px;
     font-size: 1.1em;
     color: var(--text-light);
+    text-align: center;
+    line-height: 1.4;
 }
 
 /* 下载链接样式 */
 .download-link-container {
     margin-top: 30px;
     animation: fadeIn 1s;
+    text-align: center;
 }
 
 .download-link {
     display: inline-block;
     padding: 14px 25px;
     background: linear-gradient(45deg, var(--primary-1), var(--primary-2));
-    color: var(--text-light);
+    color: var(--text-dark);
     text-decoration: none;
     border-radius: 12px;
     font-weight: bold;
@@ -88,6 +120,9 @@
     word-break: break-all;
     position: relative;
     overflow: hidden;
+    font-size: 1em;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .download-link::before {
@@ -121,6 +156,11 @@
     font-weight: bold;
     text-shadow: 0 0 5px rgba(255, 85, 85, 0.3);
     animation: errorPulse 1s infinite;
+    text-align: center;
+    padding: 10px;
+    background: rgba(255, 85, 85, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 85, 85, 0.2);
 }
 
 @keyframes errorPulse {
@@ -146,6 +186,7 @@
     margin-bottom: 8px;
     color: var(--text-light);
     font-weight: 500;
+    font-size: 1em;
 }
 
 .form-input {
@@ -158,6 +199,13 @@
     font-size: 1em;
     transition: all 0.3s ease;
     position: relative;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.form-input::placeholder {
+    color: var(--text-shallow);
+    opacity: 0.7;
 }
 
 .form-input:focus {
@@ -181,6 +229,7 @@
     height: 100%;
     background: linear-gradient(var(--primary-1), var(--primary-2));
     border-radius: 12px 0 0 12px;
+    z-index: 1;
 }
 
 /* 霓虹按钮样式 */
@@ -195,6 +244,9 @@
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.4s;
     margin-top: 12px;
+    font-family: inherit;
+    box-sizing: border-box;
+    display: block;
 }
 
 .neon-btn:hover {
@@ -208,9 +260,10 @@
     z-index: 2;
     font-weight: 600;
     font-size: 1.1em;
-    color: var(--text-light);
+    color: var(--text-dark);
     transition: color 0.2s;
-    text-shadow: 0 0 4px var(--text-light);
+    background: none;
+    -webkit-text-fill-color: var(--text-dark);
 }
 
 .btn-glow {
@@ -237,12 +290,19 @@
     margin-top: 15px;
     font-size: 0.9rem;
     text-align: left;
+    line-height: 1.5;
+    padding: 12px;
+    background: rgba(127, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-1);
 }
 
 /* 结果容器样式 */
 .result-container p {
     margin: 15px 0;
     color: var(--text-light);
+    line-height: 1.6;
+    text-align: center;
 }
 
 .back-link {
@@ -252,21 +312,28 @@
     text-decoration: none;
     transition: all 0.3s ease;
     font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: rgba(127, 255, 255, 0.1);
 }
 
 .back-link:hover {
     color: var(--primary-2);
     text-shadow: 0 0 8px var(--primary-1);
+    background: rgba(127, 255, 255, 0.2);
+    transform: translateY(-2px);
 }
 
 /* 动画效果 */
 @keyframes fadeIn {
     from {
         opacity: 0;
+        transform: translateY(10px);
     }
 
     to {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -280,28 +347,461 @@
     }
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
+/* 响应式调整 */
+
+/* 平板设备 (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
 
     .progress-container,
     .form-container,
     .result-container {
-        margin: 20px;
-        padding: 24px;
+        max-width: 540px;
+        margin: 35px auto;
+        padding: 36px;
+        border-radius: 22px;
+    }
+
+    .neon-title {
+        font-size: 2.4em;
+        margin-bottom: 36px;
+    }
+
+    .progress-bar {
+        height: 28px;
+    }
+
+    .progress-fill {
+        font-size: 0.85em;
+    }
+
+    .progress-text {
+        font-size: 1.05em;
+    }
+
+    .download-link {
+        padding: 13px 22px;
+        font-size: 0.95em;
+    }
+
+    .form-group {
+        margin-bottom: 22px;
+    }
+
+    .form-input {
+        padding: 13px 18px;
+    }
+
+    .neon-btn {
+        padding: 15px;
+    }
+}
+
+/* 移动设备 (480px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+
+    .progress-container,
+    .form-container,
+    .result-container {
+        max-width: 460px;
+        margin: 30px auto;
+        padding: 32px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     }
 
     .neon-title {
         font-size: 2.2em;
-        margin-bottom: 30px;
+        margin-bottom: 32px;
+        animation: form-glow 2s ease-in-out infinite;
+    }
+
+    .progress-wrapper {
+        margin: 25px 0;
+    }
+
+    .progress-bar {
+        height: 26px;
+        border-radius: 13px;
+    }
+
+    .progress-fill {
+        font-size: 0.8em;
+        border-radius: 10px;
+    }
+
+    .progress-text {
+        font-size: 1em;
+        margin-top: 12px;
+    }
+
+    .download-link-container {
+        margin-top: 25px;
+    }
+
+    .download-link {
+        padding: 12px 20px;
+        font-size: 0.95em;
+        border-radius: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        font-size: 0.95em;
     }
 
     .form-input {
         padding: 12px 16px;
+        font-size: 0.95em;
+        border-radius: 10px;
+    }
+
+    .input-container::before {
+        width: 3px;
+        border-radius: 10px 0 0 10px;
+    }
+
+    .neon-btn {
+        padding: 14px;
+        margin-top: 16px;
+        border-radius: 10px;
+    }
+
+    .btn-text {
+        font-size: 1.05em;
+    }
+
+    .extensions-info {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    .result-container p {
+        font-size: 0.95em;
+    }
+
+    .back-link {
+        padding: 7px 14px;
+        font-size: 0.95em;
     }
 }
 
+/* 小屏移动设备 (小于480px) */
 @media (max-width: 480px) {
+
+    .progress-container,
+    .form-container,
+    .result-container {
+        max-width: 100%;
+        margin: 20px;
+        padding: 24px;
+        border-radius: 18px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0 6px 24px var(--shadow-color),
+            inset 0 0 20px rgba(127, 255, 255, 0.03);
+    }
+
+    .neon-title {
+        font-size: 1.9em;
+        margin-bottom: 28px;
+        animation: none;
+        text-shadow: 0 0 8px var(--primary-1),
+            0 0 16px var(--primary-2);
+    }
+
+    .progress-wrapper {
+        margin: 20px 0;
+    }
+
+    .progress-bar {
+        height: 24px;
+        border-radius: 12px;
+        padding: 2px;
+        border-width: 1.5px;
+    }
+
+    .progress-fill {
+        font-size: 0.75em;
+        border-radius: 9px;
+    }
+
+    .progress-text {
+        font-size: 0.95em;
+        margin-top: 10px;
+    }
+
+    .download-link-container {
+        margin-top: 20px;
+    }
+
+    .download-link {
+        padding: 12px 18px;
+        font-size: 0.9em;
+        border-radius: 10px;
+        margin: 8px 0;
+    }
+
+    .download-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(127, 255, 255, 0.25),
+            0 6px 24px rgba(255, 127, 255, 0.3);
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
     .form-group:nth-last-child(2) {
         margin-bottom: 2rem;
+    }
+
+    .form-label {
+        font-size: 0.9em;
+        margin-bottom: 6px;
+    }
+
+    .form-input {
+        padding: 12px 14px;
+        font-size: 0.9em;
+        border-radius: 10px;
+        border-width: 1.5px;
+    }
+
+    .form-input:focus {
+        box-shadow: 0 0 12px var(--primary-1),
+            inset 0 1px 2px rgba(255, 255, 255, 0.1);
+    }
+
+    .input-container::before {
+        width: 3px;
+        border-radius: 10px 0 0 10px;
+    }
+
+    .neon-btn {
+        padding: 14px;
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+
+    .neon-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(127, 255, 255, 0.25),
+            0 6px 24px rgba(255, 127, 255, 0.3);
+    }
+
+    .btn-text {
+        font-size: 1em;
+    }
+
+    .extensions-info {
+        font-size: 0.8rem;
+        padding: 10px;
+        margin-top: 12px;
+    }
+
+    .result-container p {
+        font-size: 0.9em;
+        margin: 12px 0;
+    }
+
+    .back-link {
+        margin-top: 16px;
+        padding: 6px 12px;
+        font-size: 0.9em;
+    }
+
+    .error-message {
+        font-size: 0.9em;
+        padding: 8px;
+        margin-top: 12px;
+    }
+}
+
+/* 超小屏设备 (小于360px) */
+@media (max-width: 359px) {
+
+    .progress-container,
+    .form-container,
+    .result-container {
+        margin: 12px;
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .neon-title {
+        font-size: 1.7em;
+        margin-bottom: 24px;
+    }
+
+    .progress-bar {
+        height: 22px;
+    }
+
+    .progress-fill {
+        font-size: 0.7em;
+    }
+
+    .progress-text {
+        font-size: 0.9em;
+    }
+
+    .download-link {
+        padding: 10px 16px;
+        font-size: 0.85em;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+    .form-input {
+        padding: 10px 12px;
+        font-size: 0.85em;
+    }
+
+    .neon-btn {
+        padding: 12px;
+    }
+
+    .btn-text {
+        font-size: 0.95em;
+    }
+
+    .extensions-info {
+        font-size: 0.75rem;
+    }
+}
+
+/* 横屏模式优化 */
+@media (max-height: 600px) and (orientation: landscape) {
+
+    .progress-container,
+    .form-container,
+    .result-container {
+        margin: 20px auto;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+
+    .neon-title {
+        font-size: 2em;
+        margin-bottom: 24px;
+    }
+
+    .progress-wrapper {
+        margin: 20px 0;
+    }
+
+    .progress-bar {
+        height: 26px;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+    .form-input {
+        padding: 10px 14px;
+    }
+
+    .neon-btn {
+        margin-top: 10px;
+    }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+
+    .neon-btn:hover,
+    .download-link:hover,
+    .back-link:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .neon-btn:active,
+    .download-link:active,
+    .back-link:active {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(127, 255, 255, 0.2);
+    }
+
+    .form-input:focus {
+        border-width: 2px;
+    }
+}
+
+/* 减少动画 (无障碍) */
+@media (prefers-reduced-motion: reduce) {
+    .neon-title {
+        animation: none;
+    }
+
+    .progress-fill {
+        transition: none;
+    }
+
+    .progress-fill::after {
+        animation: none;
+    }
+
+    .download-link-container {
+        animation: none;
+    }
+
+    .error-message {
+        animation: none;
+    }
+
+    .neon-btn,
+    .download-link,
+    .back-link,
+    .form-input {
+        transition: none;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+/* 加载状态 */
+.neon-btn.loading .btn-text {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.neon-btn.loading::after {
+    content: "◌";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: rotate 1s linear infinite;
+    font-size: 1.2em;
+    color: var(--text-dark);
+    left: 0;
+    top: 0;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }

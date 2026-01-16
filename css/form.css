@@ -11,6 +11,8 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .form-title {
@@ -21,6 +23,8 @@
     text-shadow: 0 0 12px var(--primary-1),
         0 0 24px var(--primary-2);
     animation: form-glow 1.5s ease-in-out infinite;
+    line-height: 1.2;
+    font-weight: 600;
 }
 
 @keyframes form-glow {
@@ -45,6 +49,8 @@
     margin-bottom: 8px;
     color: var(--text-light);
     font-weight: 500;
+    font-size: 1em;
+    letter-spacing: 0.3px;
 }
 
 .form-input {
@@ -53,9 +59,16 @@
     background: rgba(0, 0, 0, 0.5);
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    color: var(--text-lighter);
+    color: var(--text-light);
     font-size: 1em;
     transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.form-input::placeholder {
+    color: var(--text-shallow);
+    opacity: 0.7;
 }
 
 .form-input:focus {
@@ -68,18 +81,8 @@
 
 .input-container {
     position: relative;
+    width: 100%;
 }
-
-/* .input-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(var(--primary-1), var(--primary-2));
-    border-radius: 12px 0 0 12px;
-} */
 
 .form-btn {
     width: 100%;
@@ -92,6 +95,9 @@
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.4s;
     margin-top: 12px;
+    font-family: inherit;
+    box-sizing: border-box;
+    display: block;
 }
 
 .form-btn:hover {
@@ -105,12 +111,10 @@
     z-index: 2;
     font-weight: 600;
     font-size: 1.1em;
-    color: var(--text-lighter);
+    color: var(--text-dark);
     transition: color 0.2s;
-    text-shadow: 0 0 4px var(--text-lighter);
-    /* background: linear-gradient(45deg, var(--primary-1), var(--primary-2)); */
-    /* -webkit-background-clip: text; */
-    /* -webkit-text-fill-color: transparent; */
+    background: none;
+    -webkit-text-fill-color: var(--text-dark);
 }
 
 .btn-glow {
@@ -131,28 +135,6 @@
     opacity: 1;
 }
 
-@media (max-width: 768px) {
-    .auth-container {
-        margin: 20px;
-        padding: 24px;
-    }
-
-    .form-title {
-        font-size: 2.2em;
-        margin-bottom: 30px;
-    }
-
-    .form-input {
-        padding: 12px 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    .form-group:nth-last-child(2) {
-        margin-bottom: 2rem;
-    }
-}
-
 .password-toggle {
     position: absolute;
     right: 12px;
@@ -164,15 +146,38 @@
     color: var(--text-light);
     padding: 4px;
     transition: color 0.2s;
+    z-index: 5;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
 }
 
 .password-toggle:hover {
-    color: var(--text-lighter);
+    color: var(--primary-1);
 }
 
 .form-input.invalid {
     border-color: var(--primary-2);
     animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
 }
 
 .form-btn.loading .btn-text {
@@ -190,6 +195,9 @@
     justify-content: center;
     animation: rotate 1s linear infinite;
     font-size: 1.2em;
+    color: var(--text-dark);
+    left: 0;
+    top: 0;
 }
 
 @keyframes rotate {
@@ -202,10 +210,12 @@
     }
 }
 
+/* 自定义选择框 */
 .custom-select {
     position: relative;
     width: 100%;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .custom-select-display {
@@ -214,12 +224,13 @@
     background: rgba(0, 0, 0, 0.5);
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    color: var(--text-lighter);
+    color: var(--text-light);
     font-size: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
 .custom-select-display:hover {
@@ -235,6 +246,7 @@
 .custom-select-arrow {
     transition: transform 0.3s ease;
     color: var(--text-light);
+    font-size: 0.9em;
 }
 
 .custom-select-open .custom-select-arrow {
@@ -259,6 +271,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    box-sizing: border-box;
 }
 
 .custom-select-open .custom-select-options {
@@ -267,52 +280,41 @@
 
 .custom-select-option {
     padding: 12px 32px;
-    color: var(--text-lighter);
+    color: var(--text-light);
     transition: background-color 0.2s ease;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
-
 .custom-select-option:hover {
-    background:
-        linear-gradient(var(--bg-alpha), var(--bg-alpha)) padding-box,
-        linear-gradient(45deg, var(--primary-1), var(--primary-2)) border-box;
-    border: 2px solid transparent;
-    border-radius: 10px;
+    background: rgba(127, 255, 255, 0.1);
 }
 
 .custom-select-option-selected {
     font-weight: 500;
-    padding-left: 8px;
+    background: rgba(127, 255, 255, 0.15);
 }
 
 .custom-select-option-selected::before {
     content: "▶";
     margin-right: 8px;
+    color: var(--primary-1);
 }
 
-/* 响应式调整 */
-@media (max-width: 768px) {
-    .custom-select-display {
-        padding: 12px 16px;
-    }
-
-    .custom-select-option {
-        padding: 10px 16px;
-    }
-}
-
+/* 开关组件 */
 .switch {
     position: relative;
     display: inline-block;
     width: 60px;
     height: 34px;
+    box-sizing: border-box;
 }
 
 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
+    position: absolute;
 }
 
 .slider {
@@ -326,6 +328,7 @@
     transition: all 0.4s ease;
     border-radius: 34px;
     border: 2px solid var(--text-shallow);
+    box-sizing: border-box;
 }
 
 .slider::after {
@@ -352,6 +355,7 @@
     transition: transform 0.4s ease;
     border-radius: 50%;
     z-index: 2;
+    box-sizing: border-box;
 }
 
 input:checked+.slider::after {
@@ -370,4 +374,377 @@ input:checked+.slider:before {
 input:disabled+.slider {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+/* 表单额外样式 */
+.form-footer {
+    margin-top: 24px;
+    text-align: center;
+    color: var(--text-shallow);
+    font-size: 0.9em;
+}
+
+.form-link {
+    color: var(--primary-1);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.form-link:hover {
+    color: var(--primary-2);
+    text-decoration: underline;
+    background: rgba(127, 255, 255, 0.1);
+}
+
+.form-error {
+    color: var(--primary-2);
+    font-size: 0.85em;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 响应式调整 */
+
+/* 平板设备 (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .form-container {
+        max-width: 440px;
+        margin: 50px auto;
+        padding: 36px;
+        border-radius: 22px;
+    }
+
+    .form-title {
+        font-size: 2.4em;
+        margin-bottom: 36px;
+    }
+
+    .form-group {
+        margin-bottom: 24px;
+    }
+
+    .form-input,
+    .custom-select-display {
+        padding: 13px 18px;
+    }
+
+    .form-btn {
+        padding: 15px;
+    }
+}
+
+/* 移动设备 (480px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+    .form-container {
+        max-width: 400px;
+        margin: 40px auto;
+        padding: 32px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .form-title {
+        font-size: 2.2em;
+        margin-bottom: 32px;
+        animation: form-glow 2s ease-in-out infinite;
+    }
+
+    .form-group {
+        margin-bottom: 22px;
+    }
+
+    .form-label {
+        font-size: 0.95em;
+    }
+
+    .form-input,
+    .custom-select-display {
+        padding: 12px 16px;
+        font-size: 0.95em;
+        border-radius: 10px;
+    }
+
+    .form-btn {
+        padding: 14px;
+        margin-top: 16px;
+        border-radius: 10px;
+    }
+
+    .btn-text {
+        font-size: 1.05em;
+    }
+
+    .custom-select-options {
+        max-height: 180px;
+    }
+
+    .custom-select-option {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+
+    .password-toggle {
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        font-size: 1.1em;
+    }
+
+    .switch {
+        width: 56px;
+        height: 32px;
+    }
+
+    .slider:before {
+        height: 22px;
+        width: 22px;
+        left: 3px;
+        bottom: 3px;
+    }
+
+    input:checked+.slider:before {
+        transform: translateX(24px);
+    }
+}
+
+/* 小屏移动设备 (小于480px) */
+@media (max-width: 480px) {
+    .form-container {
+        max-width: 88%;
+        margin: 20px;
+        padding: 24px;
+        border-radius: 18px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0 6px 24px var(--shadow-color),
+            inset 0 0 20px rgba(127, 255, 255, 0.03);
+    }
+
+    .form-title {
+        font-size: 1.9em;
+        margin-bottom: 28px;
+        animation: none;
+        text-shadow: 0 0 8px var(--primary-1),
+            0 0 16px var(--primary-2);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group:nth-last-child(2) {
+        margin-bottom: 2rem;
+    }
+
+    .form-label {
+        font-size: 0.9em;
+        margin-bottom: 6px;
+    }
+
+    .form-input,
+    .custom-select-display {
+        padding: 12px 14px;
+        font-size: 0.9em;
+        border-radius: 10px;
+        border-width: 1.5px;
+    }
+
+    .form-input:focus {
+        box-shadow: 0 0 12px var(--primary-1),
+            inset 0 1px 2px rgba(255, 255, 255, 0.1);
+    }
+
+    .form-btn {
+        padding: 14px;
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+
+    .form-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(127, 255, 255, 0.25),
+            0 6px 24px rgba(255, 127, 255, 0.3);
+    }
+
+    .btn-text {
+        font-size: 1em;
+    }
+
+    .custom-select-display {
+        padding: 12px 14px;
+    }
+
+    .custom-select-options {
+        max-height: 160px;
+        border-width: 1.5px;
+        border-top: none;
+    }
+
+    .custom-select-option {
+        padding: 10px 16px;
+        font-size: 0.9em;
+    }
+
+    .password-toggle {
+        right: 10px;
+        width: 28px;
+        height: 28px;
+        font-size: 1em;
+    }
+
+    .switch {
+        width: 52px;
+        height: 30px;
+    }
+
+    .slider {
+        border-width: 1.5px;
+    }
+
+    .slider:before {
+        height: 20px;
+        width: 20px;
+        left: 3px;
+        bottom: 3px;
+    }
+
+    input:checked+.slider:before {
+        transform: translateX(22px);
+    }
+
+    .form-footer {
+        font-size: 0.85em;
+        margin-top: 20px;
+    }
+}
+
+/* 超小屏设备 (小于360px) */
+@media (max-width: 359px) {
+    .form-container {
+        margin: 12px;
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .form-title {
+        font-size: 1.7em;
+        margin-bottom: 24px;
+    }
+
+    .form-input,
+    .custom-select-display {
+        padding: 10px 12px;
+        font-size: 0.85em;
+    }
+
+    .form-btn {
+        padding: 12px;
+    }
+
+    .btn-text {
+        font-size: 0.95em;
+    }
+
+    .custom-select-option {
+        padding: 8px 14px;
+    }
+
+    .switch {
+        width: 48px;
+        height: 28px;
+    }
+
+    .slider:before {
+        height: 18px;
+        width: 18px;
+    }
+
+    input:checked+.slider:before {
+        transform: translateX(20px);
+    }
+}
+
+/* 横屏模式优化 */
+@media (max-height: 600px) and (orientation: landscape) {
+    .form-container {
+        margin: 20px auto;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .form-title {
+        font-size: 2em;
+        margin-bottom: 24px;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+    .form-input,
+    .custom-select-display {
+        padding: 10px 14px;
+    }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+    .form-btn:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .form-btn:active {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(127, 255, 255, 0.2);
+    }
+
+    .form-input:focus {
+        border-width: 2px;
+    }
+
+    .password-toggle:active {
+        color: var(--primary-1);
+        transform: translateY(-50%) scale(0.95);
+    }
+}
+
+/* 减少动画 (无障碍) */
+@media (prefers-reduced-motion: reduce) {
+    .form-title {
+        animation: none;
+    }
+
+    .form-input,
+    .custom-select-display,
+    .form-btn,
+    .slider {
+        transition: none;
+    }
+
+    .form-input.invalid {
+        animation: none;
+    }
+
+    .form-btn.loading::after {
+        animation: rotate 2s linear infinite;
+    }
 }

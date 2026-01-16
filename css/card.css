@@ -1,17 +1,21 @@
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
     padding: 1rem;
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .cards-container-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(calc(25% - 1.5rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
     margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .cards-container-flex {
@@ -21,17 +25,19 @@
     padding: 1rem;
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .cards-container-flex .card {
-    /* 最小25%，最大50% */
-    flex: 1 1 calc(50% - 0.75rem);
-    min-width: calc(25% - 0.75rem);
+    flex: 1 1 280px;
+    min-width: 280px;
     max-width: calc(50% - 0.75rem);
     margin: 0;
+    box-sizing: border-box;
 }
 
-/* Card 玻璃拟态样式 */
+/* Card 玻璃拟态 */
 .card {
     background: linear-gradient(135deg,
             rgba(255, 255, 255, 0.1) 0%,
@@ -49,26 +55,220 @@
         0 8px 32px rgba(0, 0, 0, 0.1),
         0 0 0 1px rgba(127, 255, 255, 0.1) inset,
         0 4px 12px rgba(0, 0, 0, 0.05);
-    /* 确保卡片不会超过最大宽度 */
     box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 16px 48px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(127, 255, 255, 0.2) inset,
+        0 8px 24px rgba(127, 255, 255, 0.1);
+    border-color: rgba(127, 255, 255, 0.3);
+}
+
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card p {
+    color: var(--text-light);
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.card .btn {
+    align-self: flex-start;
+    margin-top: auto;
 }
 
 /* 响应式调整 */
-@media (max-width: 1200px) {
+
+/* 大屏设备 (1200px以上) */
+@media (min-width: 1200px) {
+
+    .cards-container,
+    .cards-container-flex {
+        max-width: 1200px;
+    }
+}
+
+/* 中等屏幕 (992px - 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
     .cards-container {
-        grid-template-columns: repeat(auto-fill, minmax(calc(50% - 1.5rem), 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        max-width: 960px;
+    }
+
+    .cards-container-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        max-width: 960px;
+    }
+
+    .cards-container-flex {
+        max-width: 960px;
     }
 
     .cards-container-flex .card {
-        flex: 1 1 calc(50% - 0.75rem);
-        min-width: calc(50% - 0.75rem);
+        flex: 1 1 260px;
+        min-width: 260px;
         max-width: calc(50% - 0.75rem);
     }
 }
 
-@media (max-width: 768px) {
+/* 平板设备 (768px - 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
     .cards-container {
-        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1.25rem;
+        padding: 0.75rem;
+        max-width: 720px;
+    }
+
+    .cards-container-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.25rem;
+        max-width: 720px;
+    }
+
+    .cards-container-flex {
+        gap: 1.25rem;
+        padding: 0.75rem;
+        max-width: 720px;
+    }
+
+    .cards-container-flex .card {
+        flex: 1 1 240px;
+        min-width: 240px;
+        max-width: calc(50% - 0.625rem);
+    }
+
+    .card {
+        padding: 1.5rem;
+        margin: 1rem 0;
+        border-radius: 14px;
+    }
+
+    .card h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* 小屏幕平板/大手机 (600px - 767px) */
+@media (max-width: 767px) and (min-width: 600px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    .cards-container-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+    }
+
+    .cards-container-flex {
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    .cards-container-flex .card {
+        flex: 1 1 220px;
+        min-width: 220px;
+        max-width: calc(50% - 0.5rem);
+    }
+
+    .card {
+        padding: 1.25rem;
+        margin: 0.75rem 0;
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .card p {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* 移动设备 (480px - 599px) */
+@media (max-width: 599px) and (min-width: 480px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.75rem;
+        padding: 0.5rem;
+    }
+
+    .cards-container-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.75rem;
+    }
+
+    .cards-container-flex {
+        gap: 0.75rem;
+        padding: 0.5rem;
+    }
+
+    .cards-container-flex .card {
+        flex: 1 1 200px;
+        min-width: 200px;
+        max-width: calc(50% - 0.375rem);
+    }
+
+    .card {
+        padding: 1rem;
+        margin: 0.5rem 0;
+        border-radius: 10px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    .card:hover {
+        transform: translateY(-3px);
+    }
+
+    .card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 0.75rem;
+    }
+}
+
+/* 小屏移动设备 (小于480px) */
+@media (max-width: 479px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        padding: 0.5rem;
+    }
+
+    .cards-container-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .cards-container-flex {
+        gap: 0.75rem;
+        padding: 0.5rem;
     }
 
     .cards-container-flex .card {
@@ -78,16 +278,101 @@
     }
 
     .card {
-        padding: 1.5rem;
-        margin: 1rem 0;
-        border-radius: 12px;
+        padding: 1.25rem;
+        margin: 0.5rem 0;
+        border-radius: 10px;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border-width: 1px;
+    }
+
+    .card:hover {
+        transform: translateY(-2px);
+    }
+
+    .card h3 {
+        font-size: 1.15rem;
+        margin-bottom: 0.75rem;
+        text-align: center;
+    }
+
+    .card p {
+        font-size: 0.9rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .card .btn {
+        align-self: center;
+        width: 100%;
+        max-width: 200px;
+        margin-top: 0.5rem;
     }
 }
 
-/* 小屏幕设备（手机） */
-@media (max-width: 480px) {
+/* 横屏模式优化 */
+@media (max-height: 500px) and (orientation: landscape) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .cards-container-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .cards-container-flex {
+        gap: 1rem;
+    }
+
+    .cards-container-flex .card {
+        flex: 1 1 200px;
+        min-width: 200px;
+    }
+
     .card {
         padding: 1rem;
-        margin: 0.75rem 0;
+        margin: 0.5rem 0;
+    }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+    .card:hover {
+        transform: none;
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.1),
+            0 0 0 1px rgba(127, 255, 255, 0.1) inset,
+            0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .card:active {
+        transform: translateY(-3px);
+        box-shadow:
+            0 12px 36px rgba(0, 0, 0, 0.15),
+            0 0 0 1px rgba(127, 255, 255, 0.2) inset;
+    }
+}
+
+/* 减少动画 (无障碍) */
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
+    }
+
+    .card:hover,
+    .card:active {
+        transform: none;
+    }
+}
+
+/* 暗色模式优化 */
+@media (prefers-color-scheme: dark) {
+    .card {
+        background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0.03) 100%);
+        border-color: rgba(255, 255, 255, 0.15);
     }
 }
