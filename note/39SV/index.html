@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>39SV</title>
+        <link rel="stylesheet" href="/css/maintheme.css" type="text/css" />
+        <script src="/js/main.js" type="text/javascript" defer></script>
+    </head>
+
+    <body>
+        <div class="header"></div>
+
+        <div class="main">
+            <div class="content">
+                <h1 class="title">39SV</h1>
+                <p><small>哦天哪我到底下了多大决心才准备写这个...</small></p>
+
+                <h2>39SV是什么：</h2>
+
+                <p>你说的对但是39SV是一坨Quaver的编辑器插件，用于制作简单的变速效果（真简单吗），后面忘了</p>
+
+                <h2>关于Vibrato</h2>
+
+                <p>Vibrato Distance是震动的频率（1/n拍）默认是16</p>
+                <p>Vibrato Parameters可能比较难理解，but只有几点是重要的：</p>
+                <p>行：最重要的组成部分，决定了Vibrato的位置，例如：</p>
+                <pre>
+100
+-100
+                </pre>
+                <p>这会让你的谱面先向下偏移100msx，然后再向上偏移100msx，循环往复就是一个基础的Vibrato效果。</p>
+                <p>再比如：</p>
+                <pre>
+100
+0
+-100
+                </pre>
+                <p>这就是向下100msx，回到原位，然后再向上100msx，恭喜你，实现了3次Vibrato（？</p>
+                <p>像我的那张Express Yourself中56200到57228就是一个简单的跳跳跳加上一个1/4拍的Vibrato：</p>
+                <pre>
+-85
+42
+85
+-42
+                </pre>
+                <p>然后就变得很难读了（悲</p>
+
+                <h2>动态参数</h2>
+
+                <p>欸，有人就会问了，那种一个note分裂成两个note的效果怎么实现？</p>
+                <p>这就要讲到39SV里一个很重要的东西：动态参数（我也不知道叫啥名就先叫这个吧）</p>
+                <p>动态参数是一种能根据时间自己改变数值的参数，例如：</p>
+                <pre>
+0,-100,100
+                </pre>
+                <p>意思就是从开始时的数值-100缓缓增加，最后在结束时达到100。</p>
+                <p>这种参数由数值组成，逗号分隔，这个例子中第一位的0代表过渡类型（线性过渡），-100和100分别代表起始值和结束值。</p>
+                <p>以下是所有过渡类型：</p>
+                <ul>
+                    <li>0,[开始值],[结束值]：线性过渡</li>
+                    <li>1,[开始值],[结束值],[x1],[y1],[x2],[y2]：三次贝塞尔曲线</li>
+                    <li>2,[开始值],[结束值],[x1],[y1],[x2],[y2]：1的修改版，会先从开始值到结束值，然后再从结束值到开始值</li>
+                    <li>3,[开始值],[结束值],[x1],[y1],[x2],[y2]：1的in-out版</li>
+                    <li>后面忘了</li>
+                </ul>
+
+                <p>例如：</p>
+                <pre>
+1,0,-100,0,1,1,1
+1,0,100,0,1,1,1
+                </pre>
+                <p>这个Vibrato就会将一个note分裂成两个相距200msx的note（残影）</p>
+
+                <h2>特别的</h2>
+                <p>39SV有小部分功能支持批量放置，例如Add与Keep，选中多个note再应用，就会在所有选中的note之间都应用一次（太好用了）</p>
+            </div>
+        </div>
+    </body>
+</html>
